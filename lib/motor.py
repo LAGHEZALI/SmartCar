@@ -24,23 +24,23 @@ def cleanup():
 
 def Lforward():
 	GPIO.output(L1,True)
-    GPIO.output(L2,False)
-    print 'Lforward'
+	GPIO.output(L2,False)
+	print 'Lforward'
 
 def Lreverse():
 	GPIO.output(L1,False)
-    	GPIO.output(L2,True)
-    	print 'Lreverse'
+	GPIO.output(L2,True)
+	print 'Lreverse'
 
 def Rforward():
 	GPIO.output(R1,True)
-    	GPIO.output(R2,False)
-    	print 'Rforward'
+	GPIO.output(R2,False)
+	print 'Rforward'
 
 def Rreverse():
 	GPIO.output(R1,False)
-    	GPIO.output(R2,True)
-    	print 'Rreverse'
+	GPIO.output(R2,True)
+	print 'Rreverse'
 
 
 def stop():
