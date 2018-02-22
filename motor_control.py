@@ -8,20 +8,20 @@ screen.keypad(True)
 motor.init()
 
 try:
-    while True:   
+    while True:
         char = screen.getch()
         if char == ord('x'):
             break
         elif char == curses.KEY_UP:
-        	motor.forward()
+            motor.forward()
         elif char == curses.KEY_DOWN:
-        	motor.reverse()
+            motor.reverse()
         elif char == curses.KEY_RIGHT:
-        	motor.spinLeft()
+            motor.spinLeft()
         elif char == curses.KEY_LEFT:
-        	motor.spinRight()
+            motor.spinRight()
         elif char == 10:
-        	motor.stop()
+            motor.stop()
 
 except KeyboardInterrupt:
     curses.nocbreak(); screen.keypad(0); curses.echo()
