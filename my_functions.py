@@ -98,5 +98,5 @@ def getDistance():
     distance = pulse_duration * 17150
     
     distance = round(distance, 2)
-
-    return distance
+    
+    print "->Distance:",distance,"cm"    

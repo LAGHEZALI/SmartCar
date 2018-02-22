@@ -53,7 +53,7 @@ try:
             fun.Rforward()
             #print 'Spin Left'
         elif keyp == 'u' or keyp == LEFT:
-            print "Distance:",fun.getDistance(),"cm"   
+            fun.getDistance()   
         elif keyp == ' ':
             fun.stop()
             print 'Stop'
