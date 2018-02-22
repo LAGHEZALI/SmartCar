@@ -14,10 +14,7 @@ trig = 16
 echo = 18
 
 def init():
-
     GPIO.setmode(GPIO.BOARD)
-
-    print 'Init motors ...'
 
     GPIO.setup(L1, GPIO.OUT)
     GPIO.setup(L2, GPIO.OUT)
@@ -26,18 +23,9 @@ def init():
     
     GPIO.setup(trig,GPIO.OUT)
     GPIO.setup(echo,GPIO.IN)
-
+    
     stop()
 
-    print "Init UltraSonic Sensor ..."
-
-    GPIO.output(trig, False)
-    time.sleep(2)
-
-    GPIO.output(trig, True)
-    time.sleep(0.00001)
-    GPIO.output(trig, False)
-    
 def cleanup():
     stop()
     time.sleep(1)
@@ -86,6 +74,12 @@ def spinRight():
     GPIO.output(R2,False)
 
 def getDistance():
+    GPIO.output(trig, False)
+    time.sleep(1)
+
+    GPIO.output(trig, True)
+    time.sleep(0.00001)
+    GPIO.output(trig, False)
     
     while GPIO.input(echo)==0:
         pulse_start = time.time()
@@ -98,5 +92,4 @@ def getDistance():
     distance = pulse_duration * 17150
     
     distance = round(distance, 2)
-    
     print "->Distance:",distance,"cm"    
