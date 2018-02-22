@@ -4,10 +4,10 @@ GPIO.setwarnings(False)
 
 # Pins L1, L2 Left Motor
 # Pins R1, R2 Right Motor
-L1 = 11
-L2 = 13
-R1 = 16
-R2 = 18
+L1 = 16
+L2 = 18
+R1 = 13
+R2 = 15
 
 def init():
     GPIO.setmode(GPIO.BOARD)
