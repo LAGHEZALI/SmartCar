@@ -31,14 +31,14 @@ def stop():
 def forward():
     GPIO.output(L1,False)
     GPIO.output(L2,False)
-    GPIO.output(R1,True)
-    GPIO.output(R2,False)
+    GPIO.output(R1,False)
+    GPIO.output(R2,True)
     
 def reverse():
     GPIO.output(L1,False)
     GPIO.output(L2,False)
-    GPIO.output(R1,False)
-    GPIO.output(R2,True)
+    GPIO.output(R1,True)
+    GPIO.output(R2,False)
 
 def spinLeft():
     GPIO.output(L1,False)
