@@ -31,6 +31,6 @@ try:
 
 finally:
     print 'Cleaning up ...'
-    curses.nocbreak(); screen.keypad(0); curses.echo()
+    #curses.nocbreak(); screen.keypad(0); curses.echo()
     motor.cleanup()
     print 'Done.'
