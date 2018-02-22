@@ -35,6 +35,8 @@ def cleanup():
 
 motor.init()
 
+print 'The Program has Started ...'
+
 try:
     while True:
         keyp = readkey()
@@ -43,7 +45,7 @@ try:
             print 'Forward'
         elif keyp == 's' or keyp == DOWN:
             motor.reverse()
-            print 'Backward'
+            print 'Reverse'
         elif keyp == 'd' or keyp == RIGHT:
             motor.spinRight()
             print 'Spin Right'
