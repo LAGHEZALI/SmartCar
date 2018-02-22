@@ -15,6 +15,7 @@ def init():
     GPIO.setup(L2, GPIO.OUT)
     GPIO.setup(R1, GPIO.OUT)
     GPIO.setup(R2, GPIO.OUT)
+    stop()
 
 def cleanup():
     stop()
