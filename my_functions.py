@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO, time
 
-#GPIO.setwarnings(False)
+GPIO.setwarnings(False)
 
 # Pins L1, L2 Left Motor
 # Pins R1, R2 Right Motor
@@ -9,12 +9,21 @@ L2 = 11
 R1 = 13
 R2 = 15
 
+# Ultra sonic pins
+trig = 16
+echo = 18
+
 def init():
     GPIO.setmode(GPIO.BOARD)
+
     GPIO.setup(L1, GPIO.OUT)
     GPIO.setup(L2, GPIO.OUT)
     GPIO.setup(R1, GPIO.OUT)
     GPIO.setup(R2, GPIO.OUT)
+    
+    GPIO.setup(trig,GPIO.OUT)
+    GPIO.setup(echo,GPIO.IN)
+    
     stop()
 
 def cleanup():
@@ -25,22 +34,18 @@ def cleanup():
 def Lforward():
 	GPIO.output(L1,False)
 	GPIO.output(L2,True)
-	print 'Lforward'
 
 def Lreverse():
 	GPIO.output(L1,True)
 	GPIO.output(L2,False)
-	print 'Lreverse'
 
 def Rforward():
 	GPIO.output(R1,False)
 	GPIO.output(R2,True)
-	print 'Rforward'
 
 def Rreverse():
 	GPIO.output(R1,True)
 	GPIO.output(R2,False)
-	print 'Rreverse'
 
 
 def stop():
@@ -50,17 +55,10 @@ def stop():
     GPIO.output(R2,False)
     
 def forward():
-    GPIO.output(L1,True)
-    GPIO.output(L2,False)
-    GPIO.output(R1,False)
-    GPIO.output(R2,False)
-    print '-----> forward'
+	Lforward()
+	Rforward()
     
 def reverse():
-    GPIO.output(L1,False)
-    GPIO.output(L2,True)
-    GPIO.output(R1,False)
-    GPIO.output(R2,False)
     print '-----> reverse'
 
 def spinLeft():
@@ -74,3 +72,25 @@ def spinRight():
     GPIO.output(L2,False)
     GPIO.output(R1,False)
     GPIO.output(R2,False)
+
+def getDistance():
+    GPIO.output(TRIG, False)
+    print "Waiting For Sensor To Settle"
+    time.sleep(2)
+
+    GPIO.output(TRIG, True)
+    time.sleep(0.00001)
+    GPIO.output(TRIG, False)
+    
+    while GPIO.input(ECHO)==0:
+        pulse_start = time.time()
+    
+    while GPIO.input(ECHO)==1:
+        pulse_end = time.time()
+    
+    pulse_duration = pulse_end - pulse_start
+    
+    distance = pulse_duration * 17150
+    
+    distance = round(distance, 2)
+    print "Distance:",distance,"cm"    

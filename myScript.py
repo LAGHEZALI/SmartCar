@@ -1,4 +1,4 @@
-import lib.motor as motor, sys, tty, termios
+import my_functions as fun, sys, tty, termios
 
 UP = 0
 DOWN = 1
@@ -30,10 +30,10 @@ def readkey(getchar_fn=None):
 
 def cleanup():
     print 'Cleaning up ...'
-    motor.cleanup()
+    fun.cleanup()
     print 'Done.'
 
-motor.init()
+fun.init()
 
 print 'The Program has Started ...'
 
@@ -41,19 +41,21 @@ try:
     while True:
         keyp = readkey()
         if keyp == 'w' or keyp == UP:
-            motor.Lforward()
+            fun.Lforward()
             #print 'Forward'
         elif keyp == 's' or keyp == DOWN:
-            motor.Lreverse()
+            fun.Lreverse()
             #print 'Reverse'
         elif keyp == 'd' or keyp == RIGHT:
-            motor.Rreverse()
+            fun.Rreverse()
             #print 'Spin Right'
         elif keyp == 'a' or keyp == LEFT:
-            motor.Rforward()
+            fun.Rforward()
             #print 'Spin Left'
+        elif keyp == 'u' or keyp == LEFT:
+            fun.getDistance()
         elif keyp == ' ':
-            motor.stop()
+            fun.stop()
             print 'Stop'
         elif keyp == 'x':
             break
