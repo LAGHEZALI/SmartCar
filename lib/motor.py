@@ -4,10 +4,10 @@ import RPi.GPIO as GPIO, time
 
 # Pins L1, L2 Left Motor
 # Pins R1, R2 Right Motor
-L1 = 13
-L2 = 15
-R1 = 16
-R2 = 18
+L1 = 7
+L2 = 11
+R1 = 13
+R2 = 15
 
 def init():
     GPIO.setmode(GPIO.BOARD)
