@@ -11,23 +11,32 @@ try:
     while True:
         char = screen.getch()
         if char == ord('x'):
+            "Exiting the program ..."
             break
         elif char == curses.KEY_UP:
-            print 'forward'
+            print 'Forward'
             #motor.forward()
         elif char == curses.KEY_DOWN:
-            motor.reverse()
+            print 'Reverse'
+            #motor.reverse()
         elif char == curses.KEY_RIGHT:
-            motor.spinLeft()
+            print 'Spin Right'
+            #motor.spinLeft()
         elif char == curses.KEY_LEFT:
-            motor.spinRight()
+            print 'Spin Left'
+            #motor.spinRight()
         elif char == 10:
-            motor.stop()
+            print 'Stop'
+            #motor.stop()
 
 except KeyboardInterrupt:
+    print 'Cleaning up ...'
     curses.nocbreak(); screen.keypad(0); curses.echo()
     motor.cleanup()
+    print 'Done.'
              
 finally:
+    print 'Cleaning up ...'
     curses.nocbreak(); screen.keypad(0); curses.echo()
     motor.cleanup()
+    print 'Done.'
