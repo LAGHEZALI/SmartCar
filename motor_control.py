@@ -29,12 +29,6 @@ try:
             print 'Stop'
             #motor.stop()
 
-except KeyboardInterrupt:
-    print 'Cleaning up ...'
-    curses.nocbreak(); screen.keypad(0); curses.echo()
-    motor.cleanup()
-    print 'Done.'
-             
 finally:
     print 'Cleaning up ...'
     curses.nocbreak(); screen.keypad(0); curses.echo()
