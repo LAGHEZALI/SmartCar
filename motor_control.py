@@ -41,17 +41,17 @@ try:
     while True:
         keyp = readkey()
         if keyp == 'w' or keyp == UP:
-            motor.forward()
-            print 'Forward'
+            motor.Lforward()
+            #print 'Forward'
         elif keyp == 's' or keyp == DOWN:
-            motor.reverse()
-            print 'Reverse'
+            motor.Lreverse()
+            #print 'Reverse'
         elif keyp == 'd' or keyp == RIGHT:
-            motor.spinRight()
-            print 'Spin Right'
+            motor.Rreverse()
+            #print 'Spin Right'
         elif keyp == 'a' or keyp == LEFT:
-            motor.spinLeft()
-            print 'Spin Left'
+            motor.Rforward()
+            #print 'Spin Left'
         elif keyp == ' ':
             motor.stop()
             print 'Stop'
