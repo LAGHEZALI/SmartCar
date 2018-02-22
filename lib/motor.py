@@ -28,8 +28,8 @@ def Lforward():
 	print 'Lforward'
 
 def Lreverse():
-	GPIO.output(L1,False)
-	GPIO.output(L2,True)
+	GPIO.output(L1,True)
+	GPIO.output(L2,False)
 	print 'Lreverse'
 
 def Rforward():
