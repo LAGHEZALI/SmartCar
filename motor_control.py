@@ -1,4 +1,4 @@
-import lib.motor as motor
+import lib.motor as motor, curses
 
 screen = curses.initscr()
 curses.noecho() 
