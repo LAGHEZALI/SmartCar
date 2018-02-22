@@ -27,25 +27,25 @@ def stop():
     GPIO.output(R1,False)
     GPIO.output(R2,False)
     
-def forward(speed):
+def forward():
     GPIO.output(L1,True)
     GPIO.output(L2,False)
     GPIO.output(R1,True)
     GPIO.output(R2,False)
     
-def reverse(speed):
+def reverse():
     GPIO.output(L1,False)
     GPIO.output(L2,True)
     GPIO.output(R1,False)
     GPIO.output(R2,True)
 
-def spinLeft(speed):
+def spinLeft():
     GPIO.output(L1,True)
     GPIO.output(L2,False)
     GPIO.output(R1,False)
     GPIO.output(R2,True)
     
-def spinRight(speed):
+def spinRight():
     GPIO.output(L1,False)
     GPIO.output(L2,True)
     GPIO.output(R1,True)
