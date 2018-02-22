@@ -4,10 +4,10 @@ import RPi.GPIO as GPIO, time
 
 # Pins L1, L2 Left Motor
 # Pins R1, R2 Right Motor
-L1 = 16
-L2 = 18
-R1 = 13
-R2 = 15
+L1 = 13
+L2 = 15
+R1 = 16
+R2 = 18
 
 def init():
     GPIO.setmode(GPIO.BOARD)
@@ -30,24 +30,24 @@ def stop():
     
 def forward():
     GPIO.output(L1,False)
-    GPIO.output(L2,True)
+    GPIO.output(L2,False)
     GPIO.output(R1,True)
     GPIO.output(R2,False)
     
 def reverse():
-    GPIO.output(L1,True)
+    GPIO.output(L1,False)
     GPIO.output(L2,False)
     GPIO.output(R1,False)
     GPIO.output(R2,True)
 
 def spinLeft():
     GPIO.output(L1,False)
-    GPIO.output(L2,True)
+    GPIO.output(L2,False)
     GPIO.output(R1,False)
     GPIO.output(R2,True)
     
 def spinRight():
-    GPIO.output(L1,True)
+    GPIO.output(L1,False)
     GPIO.output(L2,False)
     GPIO.output(R1,True)
     GPIO.output(R2,False)
