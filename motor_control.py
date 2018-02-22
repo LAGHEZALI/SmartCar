@@ -13,7 +13,8 @@ try:
         if char == ord('x'):
             break
         elif char == curses.KEY_UP:
-            motor.forward()
+            print 'forward'
+            #motor.forward()
         elif char == curses.KEY_DOWN:
             motor.reverse()
         elif char == curses.KEY_RIGHT:
