@@ -1,13 +1,15 @@
 import lib.motor as motor, curses
 
 screen = curses.initscr()
-curses.noecho() 
-curses.cbreak()
-screen.keypad(True)
+
 
 motor.init()
 
 try:
+    curses.noecho()
+    curses.curs_set(0)
+    screen.keypad(1)
+
     while True:
         char = screen.getch()
         if char == ord('x'):
@@ -31,6 +33,7 @@ try:
 
 finally:
     print 'Cleaning up ...'
+    curses.endwin()
     #curses.nocbreak(); screen.keypad(0); curses.echo()
     motor.cleanup()
     print 'Done.'
