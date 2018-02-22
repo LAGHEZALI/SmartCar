@@ -1,39 +1,63 @@
-import lib.motor as motor, curses
+import lib.motor as motor, sys, tty, termios
 
-screen = curses.initscr()
+UP = 0
+DOWN = 1
+RIGHT = 2
+LEFT = 3
 
+def readchar():
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(sys.stdin.fileno())
+        ch = sys.stdin.read(1)
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    if ch == '0x03':
+        raise KeyboardInterrupt
+    return ch
+
+def readkey(getchar_fn=None):
+    getchar = getchar_fn or readchar
+    c1 = getchar()
+    if ord(c1) != 0x1b:
+        return c1
+    c2 = getchar()
+    if ord(c2) != 0x5b:
+        return c1
+    c3 = getchar()
+    return ord(c3) - 65  # 0=Up, 1=Down, 2=Right, 3=Left arrows
+
+def cleanup():
+    print 'Cleaning up ...'
+    motor.cleanup()
+    print 'Done.'
 
 motor.init()
 
 try:
-    curses.noecho()
-    curses.curs_set(0)
-    screen.keypad(1)
-
     while True:
-        char = screen.getch()
-        if char == ord('x'):
-            "Exiting the program ..."
-            break
-        elif char == curses.KEY_UP:
+        keyp = readkey()
+        if keyp == 'w' or keyp == UP:
+            motor.forward()
             print 'Forward'
-            #motor.forward()
-        elif char == curses.KEY_DOWN:
-            print 'Reverse'
-            #motor.reverse()
-        elif char == curses.KEY_RIGHT:
+        elif keyp == 's' or keyp == DOWN:
+            motor.reverse()
+            print 'Backward'
+        elif keyp == 'd' or keyp == RIGHT:
+            motor.spinRight()
             print 'Spin Right'
-            #motor.spinLeft()
-        elif char == curses.KEY_LEFT:
+        elif keyp == 'a' or keyp == LEFT:
+            motor.spinLeft()
             print 'Spin Left'
-            #motor.spinRight()
-        elif char == 10:
+        elif keyp == ' ':
+            motor.stop()
             print 'Stop'
-            #motor.stop()
+        elif keyp == 'x':
+            break
 
-finally:
-    print 'Cleaning up ...'
-    curses.endwin()
-    #curses.nocbreak(); screen.keypad(0); curses.echo()
-    motor.cleanup()
-    print 'Done.'
+    print 'Exiting Program ...'
+    cleanup()
+
+except KeyboardInterrupt:
+    cleanup()
