@@ -34,18 +34,22 @@ def cleanup():
 def Lforward():
 	GPIO.output(L1,False)
 	GPIO.output(L2,True)
+    print 'Lforward'
 
 def Lreverse():
 	GPIO.output(L1,True)
 	GPIO.output(L2,False)
+    print 'Lreverse'
 
 def Rforward():
 	GPIO.output(R1,False)
 	GPIO.output(R2,True)
+    print 'Rforward'
 
 def Rreverse():
 	GPIO.output(R1,True)
 	GPIO.output(R2,False)
+    print 'Rreverse'
 
 
 def stop():
