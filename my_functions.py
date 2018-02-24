@@ -4,8 +4,8 @@ GPIO.setwarnings(False)
 
 # Pins L1, L2 Left Motor
 # Pins R1, R2 Right Motor
-L1 = 16
-L2 = 18
+L1 = 13
+L2 = 15
 R1 = 38
 R2 = 40
 
@@ -34,23 +34,18 @@ def cleanup():
 def Lforward():
 	GPIO.output(L1,False)
 	GPIO.output(L2,True)
-        print 'Lforward'
 
 def Lreverse():
 	GPIO.output(L1,True)
 	GPIO.output(L2,False)
-        print 'Lreverse'
 
 def Rforward():
 	GPIO.output(R1,False)
 	GPIO.output(R2,True)
-        print 'Rforward'
 
 def Rreverse():
 	GPIO.output(R1,True)
 	GPIO.output(R2,False)
-        print 'Rreverse'
-
 
 def stop():
     GPIO.output(L1,False)
@@ -63,19 +58,16 @@ def forward():
 	Rforward()
     
 def reverse():
-    print '-----> reverse'
+        Lreverse()
+        Rreverse()
 
 def spinLeft():
-    GPIO.output(L1,False)
-    GPIO.output(L2,False)
-    GPIO.output(R1,False)
-    GPIO.output(R2,False)
+        Rforward()
+        Lreverse()
     
 def spinRight():
-    GPIO.output(L1,False)
-    GPIO.output(L2,False)
-    GPIO.output(R1,False)
-    GPIO.output(R2,False)
+        Lforward()
+        Rreverse()
 
 def getDistance():
     GPIO.output(trig, False)

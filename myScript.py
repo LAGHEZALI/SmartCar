@@ -41,18 +41,18 @@ try:
     while True:
         keyp = readkey()
         if keyp == 'w' or keyp == UP:
-            fun.Lforward()
-            #print 'Forward'
+            fun.forward()
+            print 'Forward'
         elif keyp == 's' or keyp == DOWN:
-            fun.Lreverse()
-            #print 'Reverse'
+            fun.reverse()
+            print 'Reverse'
         elif keyp == 'd' or keyp == RIGHT:
-            fun.Rreverse()
-            #print 'Spin Right'
+            fun.spinRight()
+            print 'Spin Right'
         elif keyp == 'a' or keyp == LEFT:
-            fun.Rforward()
-            #print 'Spin Left'
-        elif keyp == 'u' or keyp == LEFT:
+            fun.spinLeft()
+            print 'Spin Left'
+        elif keyp == 'u':
             while True:
                 fun.getDistance() 
         elif keyp == ' ':
