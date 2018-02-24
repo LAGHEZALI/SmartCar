@@ -4,10 +4,10 @@ GPIO.setwarnings(False)
 
 # Pins L1, L2 Left Motor
 # Pins R1, R2 Right Motor
-L1 = 7
-L2 = 11
-R1 = 13
-R2 = 15
+L1 = 16
+L2 = 18
+R1 = 38
+R2 = 40
 
 # Ultra sonic pins
 trig = 16
@@ -34,22 +34,22 @@ def cleanup():
 def Lforward():
 	GPIO.output(L1,False)
 	GPIO.output(L2,True)
-    print 'Lforward'
+        print 'Lforward'
 
 def Lreverse():
 	GPIO.output(L1,True)
 	GPIO.output(L2,False)
-    print 'Lreverse'
+        print 'Lreverse'
 
 def Rforward():
 	GPIO.output(R1,False)
 	GPIO.output(R2,True)
-    print 'Rforward'
+        print 'Rforward'
 
 def Rreverse():
 	GPIO.output(R1,True)
 	GPIO.output(R2,False)
-    print 'Rreverse'
+        print 'Rreverse'
 
 
 def stop():
