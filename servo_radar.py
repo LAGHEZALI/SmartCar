@@ -9,8 +9,8 @@ def cleanup():
 
 servo.init()
 
-begin = 0
-end = 100
+begin = 10
+end = 90
 
 print 'Servo Radar Program has Started ...'
 
