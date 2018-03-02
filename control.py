@@ -1,6 +1,9 @@
 #   Written by LAGHEZALI MOHAMED REDA - 2018
 
-import my_functions as fun, sys, tty, termios
+import lib.car_motors as car
+import lib.servo_motor as servo
+import lib.ultra_sonic as us
+import sys, tty, termios
 
 UP = 0
 DOWN = 1
@@ -31,16 +34,26 @@ def readkey(getchar_fn=None):
     return ord(c3) - 65  # 0=Up, 1=Down, 2=Right, 3=Left arrows
 
 def cleanup():
-    print 'Cleaning up ...'
-    fun.cleanup()
-    print 'Done.'
+    print 'Stopping Control Program...'
+    print 'Cleaning up Car Motors...'
+    car.cleanup()
+    print 'Done Cleaning up Car Motors.'
+    print 'Cleaning up Ultra Sonic Sensor...'
+    us.cleanup()
+    print 'Done Cleaning up Ultra Sonic Sensor.'
+    print 'Cleaning up Servo Motor ...'
+    servo.cleanup()
+    print 'Done Cleaning up Servo Motor.'
+    print 'Control Program Stoped.'
 
-fun.init()
+car.init()
+servo.init()
+us.init()
 
-position = 50 # between 0 and 100
-step = 2
+position = 50 # servo position : between 0 and 100
+step = 2 # servo step when triggered
 
-print 'The Program has Started ...'
+print 'Control Porgram has Started ...'
 
 try:
     while True:
@@ -49,68 +62,68 @@ try:
         #   Motors
         
         if keyp == 'w' or keyp == UP:
-            fun.forward()
+            car.forward()
             print 'Forward'
         elif keyp == 's' or keyp == DOWN:
-            fun.reverse()
+            car.reverse()
             print 'Reverse'
         elif keyp == 'd' or keyp == RIGHT:
-            fun.spinRight()
+            car.spinRight()
             print 'Spin Right'
         elif keyp == 'a' or keyp == LEFT:
-            fun.spinLeft()
+            car.spinLeft()
             print 'Spin Left'
         elif keyp == '4':
-            fun.turnLeft()
+            car.turnLeft()
             print 'Turn Left 90 degree'
         elif keyp == '6':
-            fun.turnRight()
+            car.turnRight()
             print 'Turn Right 90 degree'
         elif keyp == '7':
-            fun.Lforward()
+            car.Lforward()
             print 'Lforward'
         elif keyp == '9':
-            fun.Rforward()
+            car.Rforward()
             print 'Rforward'
         elif keyp == '1':
-            fun.Lreverse()
+            car.Lreverse()
             print 'Lreverse'
         elif keyp == '3':
-            fun.Rreverse()
+            car.Rreverse()
             print 'Rreverse'
         elif keyp == ' ':
-            fun.stop()
+            car.stop()
             print 'Stop'
 
         #   UltraSound Sensor
         
         elif keyp == 't':
-            print 'distance =', fun.getDistance(), "cm" 
+            print 'distance =', us.getDistance(), "cm" 
 
         #   Servo Motor
 
         elif keyp == 'i':
             position = 50
-            fun.setServo(position)
+            servo.setServo(position)
             print 'Servo set to Middle Position'
         elif keyp == 'o':
             position = 0
-            fun.setServo(position)
+            servo.setServo(position)
             print 'Servo set to Left Position'
         elif keyp == 'p':
             position = 100
-            fun.setServo(position)
+            servo.setServo(position)
             print 'Servo set to Right Position'
         
         elif keyp == 'y':
             if position < 100:
                 position += step
-                fun.setServo(position)
+                servo.setServo(position)
                 print 'Servo Position +', step, '=', position
         elif keyp == 'u':
             if position > 0:
                 position -= step
-                fun.setServo(position)
+                servo.setServo(position)
                 print 'Servo Position -', step, '=', position
         
         #   Quit the Program
@@ -118,7 +131,6 @@ try:
         elif keyp == 'x':
             break
 
-    print 'Exiting Program ...'
     cleanup()
 
 except KeyboardInterrupt:

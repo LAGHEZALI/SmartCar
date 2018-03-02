@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO, time
 
 GPIO.setwarnings(False)
 
-# Servo pins
+# Servo pin
 servo = 12
 
 def init():
@@ -23,8 +23,6 @@ def cleanup():
     stopServo()
     time.sleep(1)
     GPIO.cleanup()
-
-#   My servo Functions
 
 def servoMiddle():
     servoMotor.ChangeDutyCycle(7.5)
@@ -49,19 +47,3 @@ def setServo(radius):
     else:
         r = radius*0.095+3
         servoMotor.ChangeDutyCycle(r)
-
-def radarSearch(begin, end):
-    if begin < 0 :
-        begin = 0
-    if end > 100 :
-        end = 100
-    
-    while True:
-        for x in range(begin, end):
-            setServo(x)
-            time.sleep(0.005)
-        x=end
-        while x > begin:
-            setServo(x)
-            time.sleep(0.005)
-            x -= 1
