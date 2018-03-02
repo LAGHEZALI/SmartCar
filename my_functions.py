@@ -84,9 +84,11 @@ def reverse():
 
 def spinLeft():
     Lreverse()
+    Rforward()
     
 def spinRight():
     Rreverse()
+    Lforward()
 
 def turnLeft():
     spinLeft()
