@@ -62,10 +62,10 @@ try:
             print 'Spin Left'
         elif keyp == '4':
             fun.turnLeft()
-            print 'Turn Left 90°'
+            print 'Turn Left 90 degree'
         elif keyp == '6':
             fun.turnRight()
-            print 'Turn Right 90°'
+            print 'Turn Right 90 degree'
         elif keyp == '7':
             fun.Lforward()
             print 'Lforward'

@@ -9,7 +9,7 @@ def cleanup():
 
 fun.init()
 
-print 'Obstacle Avoidance Program has Started ...'
+print 'Searching Servo Program has Started ...'
 
 try:
     fun.radarSearch(37,55)
