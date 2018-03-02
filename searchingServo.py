@@ -12,6 +12,6 @@ fun.init()
 print 'Searching Servo Program has Started ...'
 
 try:
-    fun.radarSearch(30,80)
+    fun.radarSearch(20,70)
 except KeyboardInterrupt:
     cleanup()
