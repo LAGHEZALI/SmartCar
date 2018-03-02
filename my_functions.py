@@ -93,10 +93,12 @@ def spinRight():
 def turnLeft():
     spinLeft()
     time.sleep(Ltime)
+    stop()
 
 def turnRight():
     spinRight()
     time.sleep(Rtime)
+    stop()
 
 #   My ultrasound functions
 
