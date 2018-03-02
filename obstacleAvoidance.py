@@ -20,13 +20,13 @@ try:
         
         distance = fun.getDistance()
 
-        while (distance > 20):
-            print 'Distance =', distance, 'cm ---> Forward'
+        while (distance > 30):
+            #print 'Distance =', distance, 'cm ---> Forward'
             distance = fun.getDistance()
             
         fun.turnRight()
-        print ''
-        print '!!! Distance =', distance, 'cm ---> Turning Right'
-        print ''
+        #print ''
+        #print '!!! Distance =', distance, 'cm ---> Turning Right'
+        #print ''
 except KeyboardInterrupt:
     cleanup()
