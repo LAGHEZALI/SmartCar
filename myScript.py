@@ -60,6 +60,12 @@ try:
         elif keyp == 'a' or keyp == LEFT:
             fun.spinLeft()
             print 'Spin Left'
+        elif keyp == '4':
+            fun.turnLeft()
+            print 'Turn Left 90°'
+        elif keyp == '6':
+            fun.turnRight()
+            print 'Turn Right 90°'
         elif keyp == '7':
             fun.Lforward()
             print 'Lforward'
