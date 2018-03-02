@@ -15,15 +15,13 @@ fun.init()
 print 'Obstacle Avoidance Program has Started ...'
 
 try:
-    #fun.radarSearch(37,55)
-
     while True:
         
         fun.forward()
         
         distance = fun.getDistance()
 
-        while (distance > 15):
+        while (distance > 20):
             print 'Distance =', distance, 'cm ---> Forward'
             distance = fun.getDistance()
             
