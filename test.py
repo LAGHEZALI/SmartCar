@@ -48,7 +48,7 @@ try:
 
         #   Servo Motor
 
-        elif keyp == 'i':
+        if keyp == 'i':
             position = 50
             fun.setServo(position)
             print 'Servo set to Middle Position'
