@@ -19,8 +19,8 @@ echo = 18
 servo = 12
 
 # Period for turning left/right 90 degrees (depends on the landing)
-Ltime = 0.9
-Rtime = 0.8
+Ltime = 0.875
+Rtime = 0.825
 
 def init():
 
