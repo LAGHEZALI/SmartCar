@@ -145,7 +145,7 @@ def servoRight():
     servoMotor.ChangeDutyCycle(3)
 
 def stopServo():
-    servo.stop()
+    servoMotor.stop()
 
 def setServoCycle(cycle):
     servoMotor.ChangeDutyCycle(cycle)
