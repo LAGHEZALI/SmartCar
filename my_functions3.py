@@ -59,9 +59,9 @@ def radarSearch(begin, end):
     while True:
         for x in range(begin, end):
             setServo(x)
-            time.sleep(0.01)
+            time.sleep(0.005)
         x=end
         while x > begin:
             setServo(x)
-            time.sleep(0.01)
+            time.sleep(0.005)
             x -= 1
