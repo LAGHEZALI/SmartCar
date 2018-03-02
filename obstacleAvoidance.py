@@ -20,7 +20,7 @@ try:
         
         distance = fun.getDistance()
 
-        while (distance > 40):
+        while (distance > 15):
             print 'Distance =', distance, 'cm ---> Forward'
             distance = fun.getDistance()
             
