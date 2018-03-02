@@ -14,10 +14,11 @@ fun.init()
 
 print 'Obstacle Avoidance Program has Started ...'
 
+fun.radarSearch(37,55)
+
 try:
     while True:
         
-        fun.reverse()
         fun.forward()
         
         distance = fun.getDistance()
@@ -27,6 +28,8 @@ try:
             distance = fun.getDistance()
             
         fun.turnRight()
+        print ''
         print '!!! Distance =', distance, 'cm ---> Turning Right'
+        print ''
 except KeyboardInterrupt:
     cleanup()
