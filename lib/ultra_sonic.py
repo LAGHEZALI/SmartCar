@@ -15,8 +15,6 @@ def init():
     GPIO.setup(trig,GPIO.OUT)
     GPIO.setup(echo,GPIO.IN)
 
-    GPIO.setup(servo,GPIO.OUT)
-
 def cleanup():
     time.sleep(1)
     GPIO.cleanup()
