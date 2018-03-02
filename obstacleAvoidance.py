@@ -13,7 +13,7 @@ def cleanup():
     print 'Done Cleaning up Ultra Sonic Sensor.'
     print 'Obstacle Avoidance Program Stoped.'
 
-critical_distance = 20.0
+critical_distance = 15.0
 distance = 0.0
 
 us.init()
