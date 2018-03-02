@@ -75,31 +75,17 @@ def stop():
     GPIO.output(R2,False)
     
 def forward():
-    stop()
-    time.sleep(0.1)
-    Lreverse()
-    time.sleep(0.1)
     Lforward()
-    time.sleep(0.1)
     Rforward()
     
 def reverse():
-    stop()
-    time.sleep(0.1)
-    Lforward()
-    time.sleep(0.1)
     Lreverse()
-    time.sleep(0.1)
     Rreverse()
 
 def spinLeft():
-    stop()
-    time.sleep(0.1)
     Lreverse()
     
 def spinRight():
-    stop()
-    time.sleep(0.1)
     Rreverse()
 
 def turnLeft():
