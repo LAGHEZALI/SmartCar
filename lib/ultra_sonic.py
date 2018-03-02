@@ -21,7 +21,7 @@ def cleanup():
 
 def getDistance():
     GPIO.output(trig, False)
-    time.sleep(0.1)
+    time.sleep(0.01)
 
     GPIO.output(trig, True)
     time.sleep(0.00001)
