@@ -1,3 +1,5 @@
+#   Written by LAGHEZALI MOHAMED REDA - 2018
+
 import RPi.GPIO as GPIO, time
 
 GPIO.setwarnings(False)
@@ -13,7 +15,17 @@ R2 = 40
 trig = 16
 echo = 18
 
+# Ultra sonic pins
+servo = 12
+
+# Period for turning left/right 90 degrees (depends on the landing)
+Ltime = 3
+Rtime = 2.3
+
 def init():
+
+    global servoMotor
+    
     GPIO.setmode(GPIO.BOARD)
 
     GPIO.setup(L1, GPIO.OUT)
@@ -23,13 +35,22 @@ def init():
     
     GPIO.setup(trig,GPIO.OUT)
     GPIO.setup(echo,GPIO.IN)
+
+    GPIO.setup(servo,GPIO.OUT)
+
+    servoMotor = GPIO.PWM(servo,50)
+    servoMotor.start(7.5)
     
     stop()
 
 def cleanup():
     stop()
+    servoMiddle()
+    stopServo()
     time.sleep(1)
     GPIO.cleanup()
+
+#   My motor functions
 
 def Lforward():
 	GPIO.output(L1,False)
@@ -54,24 +75,46 @@ def stop():
     GPIO.output(R2,False)
     
 def forward():
-	Lforward()
-	Rforward()
+    stop()
+    time.sleep(0.1)
+    Lreverse()
+    time.sleep(0.1)
+    Lforward()
+    time.sleep(0.1)
+    Rforward()
     
 def reverse():
-        Lreverse()
-        Rreverse()
+    stop()
+    time.sleep(0.1)
+    Lforward()
+    time.sleep(0.1)
+    Lreverse()
+    time.sleep(0.1)
+    Rreverse()
 
 def spinLeft():
-        Rforward()
-        Lreverse()
+    stop()
+    time.sleep(0.1)
+    Lreverse()
     
 def spinRight():
-        Lforward()
-        Rreverse()
+    stop()
+    time.sleep(0.1)
+    Rreverse()
+
+def turnLeft():
+    spinLeft()
+    time.sleep(Ltime)
+
+def turnRight():
+    spinRight()
+    time.sleep(Rtime)
+
+#   My ultrasound functions
 
 def getDistance():
     GPIO.output(trig, False)
-    time.sleep(1)
+    time.sleep(0.2)
 
     GPIO.output(trig, True)
     time.sleep(0.00001)
@@ -88,4 +131,46 @@ def getDistance():
     distance = pulse_duration * 17150
     
     distance = round(distance, 2)
-    print "->Distance:",distance,"cm"    
+    return distance
+
+#   My servo Functions
+
+def servoMiddle():
+    servoMotor.ChangeDutyCycle(7.5)
+
+def servoLeft():
+    servoMotor.ChangeDutyCycle(12.5) 
+
+def servoRight():
+    servoMotor.ChangeDutyCycle(3)
+
+def stopServo():
+    servo.stop()
+
+def setServoCycle(cycle):
+    servoMotor.ChangeDutyCycle(cycle)
+
+def setServo(radius):
+    if radius<0:
+        servoMotor.ChangeDutyCycle(3)
+    elif radius>100:
+        servoMotor.ChangeDutyCycle(12.5)
+    else:
+        r = radius*0.095+3
+        servoMotor.ChangeDutyCycle(r)
+
+def radarSearch(begin, end):
+    if begin < 0 :
+        begin = 0
+    if end > 100 :
+        end = 100
+    
+    while True:
+        for x in range(begin, end):
+            setServo(x)
+            time.sleep(0.05)
+        x=end
+        while x > begin:
+            setServo(x)
+            time.sleep(0.05)
+            x -= 1
