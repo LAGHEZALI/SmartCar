@@ -1,7 +1,6 @@
 #   Written by LAGHEZALI MOHAMED REDA - 2018
 
-import my_functions as fun
-from multiprocessing import Process
+import my_functions2 as fun
 
 def cleanup():
     print 'Cleaning up ...'
