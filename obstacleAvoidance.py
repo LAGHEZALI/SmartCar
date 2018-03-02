@@ -14,9 +14,9 @@ fun.init()
 
 print 'Obstacle Avoidance Program has Started ...'
 
-fun.radarSearch(37,55)
-
 try:
+    #fun.radarSearch(37,55)
+
     while True:
         
         fun.forward()
