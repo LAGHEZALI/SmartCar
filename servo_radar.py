@@ -7,7 +7,7 @@ def cleanup():
     servo.cleanup()
     print 'Done Cleaning up Servo Motor.'
 
-fun.init()
+servo.init()
 
 begin = 0
 end = 100
