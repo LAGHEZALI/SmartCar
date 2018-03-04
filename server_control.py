@@ -44,10 +44,10 @@ while True:
             data = ''
             data = tcpCliSock.recv(BUFSIZE)
             if not data:
-                    break
+                break
             
             if data == 'forward':
-                    car.forward()
+                car.forward()
                 print 'Forward'
             elif data == 'reverse':
                 car.reverse()
@@ -117,5 +117,5 @@ while True:
                 break
 
     except KeyboardInterrupt:
-            cleanup()
+        cleanup()
 tcpSerSock.close();
