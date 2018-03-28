@@ -3,7 +3,7 @@
 import lib.car_motors as car
 import lib.servo_motor as servo
 import lib.ultra_sonic as us
-import sys, tty, termios
+import sys, tty, termios, time
 
 UP = 0
 DOWN = 1
@@ -80,11 +80,11 @@ try:
             car.advance(-1)
             print 'Advance -1 Step'
         elif keyp == '4':
-            car.spinModulation(-1, 20)
+            car.spinModulation(-1.0, 20)
             #car.spinLeftFor(0.7)
             print 'Turn Left 90 degree (Modulation)'
         elif keyp == '6':
-            car.spinModulation(1, 20)
+            car.spinModulation(1.0, 20)
             #car.spinRightFor(0.7)
             print 'Turn Right 90 degree (Modulation)'
         elif keyp == '7':
