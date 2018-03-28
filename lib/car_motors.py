@@ -104,7 +104,7 @@ def turnRight():
 
 def advance(step):
     if step < 0:
-        backward()
+        reverse()
         step = -step
     else:
         forward()
