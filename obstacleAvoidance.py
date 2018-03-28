@@ -43,6 +43,7 @@ def scan():
         servo.setServo(i)
         time.sleep(0.3)
         scanList.append(us.getDistance())
+        servo.servoMiddle()
     return scanList
 
 #   Our Algorithm

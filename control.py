@@ -80,11 +80,11 @@ try:
             car.advance(-1)
             print 'Advance -1 Step'
         elif keyp == '4':
-            car.spinModulation(-1.0, 20)
+            car.spinModulation(-0.8, 20)
             #car.spinLeftFor(0.7)
             print 'Turn Left 90 degree (Modulation)'
         elif keyp == '6':
-            car.spinModulation(1.0, 20)
+            car.spinModulation(0.8, 20)
             #car.spinRightFor(0.7)
             print 'Turn Right 90 degree (Modulation)'
         elif keyp == '7':
@@ -146,7 +146,8 @@ try:
                 servo.setServo(i)
                 time.sleep(0.3)
                 scanList.append(us.getDistance())
-            print '  ===  '.join(mylist)
+            print '  ===  '.join(scanList)
+            servo.servoMiddle()
 
 
     cleanup()
