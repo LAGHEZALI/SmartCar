@@ -38,7 +38,7 @@ servo.init()
 
 def scan():
     scanList = []
-    for i in range(10, 90, 10):
+    for i in range(10, 100, 10):
         time.sleep(0.3)
         servo.setServo(i)
         time.sleep(0.3)
