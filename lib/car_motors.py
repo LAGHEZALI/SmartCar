@@ -14,6 +14,8 @@ R2 = 40
 # Period for turning left/right 90 degrees (depends on the landing)
 Ltime = 0.825
 Rtime = 0.8
+# Period for advancing with exacltly the same size as the smartCar (depends on the landing)
+advanceTime = 1
 
 def init():
 
@@ -74,7 +76,48 @@ def turnLeft():
     time.sleep(Ltime)
     stop()
 
+def spinLeftFor(delay):
+    Lreverse()
+    Rforward()
+    time.sleep(delay)
+    stop()
+    
+def spinRightFor(delay):
+    Rreverse()
+    Lforward()
+    time.sleep(delay)
+    stop()
+
+def spinModulation(delay, steps):
+    if delay < 0:
+        delay = -delay
+        for i in range(1,steps):
+            spinLeftFor(delay/steps)
+    else:
+        for i in range(1,steps):
+            spinRightFor(delay/steps)
+
 def turnRight():
     spinRight()
     time.sleep(Rtime)
     stop()
+
+def advance(step):
+    if step < 0:
+        backward()
+        step = -step
+    else:
+        forward()
+    time.sleep(advanceTime*step)
+    stop()
+
+def nanoSpin(step):
+    if step > 0:
+        spinRight()
+        time.sleep(step)
+        stop()
+    else:
+        spinLeft()
+        time.sleep(step)
+        stop()
+

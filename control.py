@@ -73,11 +73,17 @@ try:
         elif keyp == 'a' or keyp == LEFT:
             car.spinLeft()
             print 'Spin Left'
+        elif keyp == '8':
+            car.advance(1)
+            print 'Advance 1 Step'
+        elif keyp == '2':
+            car.advance(-1)
+            print 'Advance -1 Step'
         elif keyp == '4':
-            car.turnLeft()
+            car.spinLeftFor(0.7)
             print 'Turn Left 90 degree'
         elif keyp == '6':
-            car.turnRight()
+            car.spinRightFor(0.7)
             print 'Turn Right 90 degree'
         elif keyp == '7':
             car.Lforward()

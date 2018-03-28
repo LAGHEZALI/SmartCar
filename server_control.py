@@ -64,6 +64,9 @@ while True:
             elif data == 'turnRight':
                 car.turnRight()
                 print 'Turn Right 90 degree'
+            elif data == 'nanoSpin': #starts with nano spin
+                # get delay x
+                car.nanoSpin(x) 
             elif data == '7':
                 car.Lforward()
                 print 'Lforward'
