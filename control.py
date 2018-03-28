@@ -80,10 +80,12 @@ try:
             car.advance(-1)
             print 'Advance -1 Step'
         elif keyp == '4':
-            car.spinLeftFor(0.7)
+            car.spinModulation(-0.7, 10)
+            #car.spinLeftFor(0.7)
             print 'Turn Left 90 degree'
         elif keyp == '6':
-            car.spinRightFor(0.7)
+            car.spinModulation(-0.7, 10)
+            #car.spinRightFor(0.7)
             print 'Turn Right 90 degree'
         elif keyp == '7':
             car.Lforward()
