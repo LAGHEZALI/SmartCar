@@ -82,11 +82,11 @@ try:
         elif keyp == '4':
             car.spinModulation(-0.7, 10)
             #car.spinLeftFor(0.7)
-            print 'Turn Left 90 degree'
+            print 'Turn Left 90 degree (Modulation)'
         elif keyp == '6':
             car.spinModulation(0.7, 10)
             #car.spinRightFor(0.7)
-            print 'Turn Right 90 degree'
+            print 'Turn Right 90 degree (Modulation)'
         elif keyp == '7':
             car.Lforward()
             print 'Lforward'
