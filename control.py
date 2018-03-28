@@ -146,7 +146,7 @@ try:
                 servo.setServo(i)
                 time.sleep(0.3)
                 scanList.append(us.getDistance())
-            print '  ===  '.join(scanList)
+            print '  ===  '.join(map(str, scanList))
             servo.servoMiddle()
 
 
