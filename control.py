@@ -76,11 +76,11 @@ try:
             car.spinLeft()
             print 'Spin Left'
         elif keyp == '8':
-            car.advance(DF3A)
-            print 'Advance 1 Step'
+            car.advanceDistance(DF3A)
+            print 'Advance with DF3A=', DF3A
         elif keyp == '2':
-            car.advance(-DF3A)
-            print 'Advance -1 Step'
+            car.advanceDistance(-DF3A)
+            print 'Advance with DF3A=', DF3A
         elif keyp == '4':
             car.spinModulation(-0.8, 20)
             #car.spinLeftFor(0.7)
