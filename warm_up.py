@@ -170,7 +170,7 @@ try:
         elif keyp == '0':
             scanList = []
             dis = 0.0
-            for i in range(30, 80, 10):
+            for i in range(10, 100, 10):
                 servo.setServo(i)
                 time.sleep(0.5)
                 dis = us.getDistance()
