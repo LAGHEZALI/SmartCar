@@ -93,10 +93,11 @@ try:
     while True:
         print 'start scan'
         scan_list = scan()
-        print '  ===  '.join(map(str, scanList))
+        print '  ===  '.join(map(str, scan_list))
         print 'end scan'
         i = 0
         obstacle = []
+        print 'start verifing obstacle'
         for value in scan_list:
             if value < safety_distance:
                 obstacle.append(i)
@@ -104,9 +105,11 @@ try:
         ang_t = get_r_angle(scan_list)
 
         if len(obstacle) != 0:
+            print 'start turning'
             car.spinModulation(angle_to_sleep_time(ang_t), 20)
             direction_goal = ang_t
         
+        print 'advance'
         if ang_t > 0:
             x = int( scan_list_size/2 - int(ang_t) % int(scan_list_size / 2 ) )
             y = int( scan_list_size/2 + int(-ang_t) % int(scan_list_size / 2 ) )
