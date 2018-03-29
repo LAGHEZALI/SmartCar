@@ -170,7 +170,7 @@ try:
         elif keyp == '0':
             scanList = []
             dis = 0.0
-            for i in range(40, 70, 10):
+            for i in range(30, 80, 10):
                 servo.setServo(i)
                 dis = us.getDistance()
                 while dis > 1000 or dis < 5:
