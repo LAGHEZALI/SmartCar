@@ -108,9 +108,11 @@ try:
             direction_goal = ang_t
         
         if ang_t > 0:
-            car.advance(scan_list[int(scan_list_size/2 - int(ang_t) % int(scan_list_size)/2))] / 2)
+            x = int( scan_list_size/2 - int(ang_t) % int(scan_list_size / 2 ) )
+            y = int( scan_list_size/2 + int(-ang_t) % int(scan_list_size / 2 ) )
+            car.advance( x )
         else:
-            car.advance(scan_list[int(scan_list_size/2 + int(-ang_t) % int(scan_list_size/2))] / 2)
+            car.advance( y )
 
         car.spinModulation(angle_to_sleep_time(-ang_t), 20)
 
