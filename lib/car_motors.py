@@ -115,9 +115,9 @@ def advance(step):
 
 
 def advanceDistance(distance):
-    if step < 0:
+    if distance < 0:
         reverse()
-        step = -step
+        distance = -distance
     else:
         forward()
     time.sleep(advanceTime*distance/24)
