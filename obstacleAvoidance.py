@@ -111,12 +111,14 @@ try:
         else:
             ang_t = 0
         
-        print 'advance'
+        
         x = int( scan_list_size/2 - int(ang_t) % int(scan_list_size / 2 ) )
         y = int( scan_list_size/2 + int(-ang_t) % int(scan_list_size / 2 ) )
         if ang_t > 0:
+            print 'advance with', (scan_list[x] /2)
             car.advanceDistance( scan_list[x] /2)
         else:
+            print 'advance with', (scan_list[y] /2)
             car.advanceDistance( scan_list[y] /2 )
 
         car.spinModulation(-ang_t, 20)
