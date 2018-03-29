@@ -54,7 +54,7 @@ def scan():
         servo.setServo(i)
         time.sleep(0.3)
         scanList.append(us.getDistance())
-        servo.servoMiddle()
+    servo.servoMiddle()
     return scanList
 
 
@@ -63,13 +63,13 @@ def distance(p1, p2):
 
 
 def get_r_angle(scanList):
-    m = MAX_TAB/2
+    m = scan_list_size/2
     up = 0
     down = 0
-    a0 = ANGLE_MAX/MAX_TAB * MAX_TAB/2
+    a0 = max_angle/scan_list_size * scan_list_size/2
     for value in scanList:
         up += a0 * value
-        a0 = a0 - ANGLE_MAX/MAX_TAB
+        a0 = a0 - max_angle/scan_list_size
         down = down + value
     ans = up/down
     return ans
@@ -95,7 +95,9 @@ print 'Obstacle Avoidance Program has Started ... Wish Me Good Luck !'
 
 try:
     while True:
+        print 'start scan'
         scan_list = scan()
+        print 'end scan'
         i = 0
         obstacle = []
         for value in scan_list:
