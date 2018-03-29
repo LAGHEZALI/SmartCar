@@ -16,7 +16,7 @@ Ltime = 0.825
 Rtime = 0.8
 # Period for advancing with exacltly the same size as the smartCar (depends on the landing)
 #advanceTime = 0.8
-advanceTime = 0.3
+advanceTime = 0.8
 
 
 def init():
