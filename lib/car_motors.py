@@ -14,10 +14,8 @@ R2 = 40
 # Period for turning left/right 90 degrees (depends on the landing)
 Ltime = 0.825
 Rtime = 0.8
-# Period for advancing with exacltly the same size as the smartCar (depends on the landing)
-#advanceTime = 0.8
 
-advanceTime = 0.8
+# Period for advancing with exacltly the same size as the smartCar (depends on the landing)
 car_lenght = 25.25
 car_speed = 31.0
 
@@ -113,15 +111,6 @@ def turnRight():
     time.sleep(Rtime)
     stop()
 
-def advance(step):
-    if step < 0:
-        reverse()
-        step = -step
-    else:
-        forward()
-    time.sleep(advanceTime*step)
-    stop()
-
 
 def advanceDistance(distance):
     if distance < 0:
@@ -142,6 +131,44 @@ def nanoSpin(step):
         time.sleep(step)
         stop()
 
+
 def angleToDelay(angle):
     return float(angle) * float(delay360) / 360
+
+
+def angleToDelayWarmUp(angle, delay):
+    return float(angle) * float(delay) / 360
     
+
+def spinRightModulationWarmUp(angle, steps, delay):
+    if angle == 0:
+        return
+    if angle < 0:
+        angle = -angle
+        for i in range(1,steps+1):
+            spinLeftFor(angleToDelayWarmUp(angle, delay)/steps)
+    else:
+        for i in range(1,steps+1):
+            spinRightFor(angleToDelayWarmUp(angle, delay)/steps)
+
+
+def spinLeftModulationWarmUp(angle, steps, delay):
+    if angle == 0:
+        return
+    if angle < 0:
+        angle = -angle
+        for i in range(1,steps+1):
+            spinRightFor(angleToDelayWarmUp(angle, delay)/steps)
+    else:
+        for i in range(1,steps+1):
+            spinLeftFor(angleToDelayWarmUp(angle, delay)/steps)
+
+
+def advanceDistanceWarmUp(distance, cs):
+    if distance < 0:
+        reverse()
+        distance = -distance
+    else:
+        forward()
+    time.sleep(distance/cs)
+    stop()
