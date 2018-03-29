@@ -63,12 +63,12 @@ def get_r_angle(scanList):
     up = 0
     down = 0
     a0 = max_angle/scan_list_size * scan_list_size/2
-    for value in scanList:
-        if value >=1000 or value<=5:
-            value =  safety_distance-1
-        up += a0 * value
+    for i in range(0, scan_list_size):
+        if scan_list_size[i] >=1000 or scan_list_size[i]<=5:
+            scan_list_size[i] =  safety_distance-1
+        up += a0 * scan_list_size[i]
         a0 = a0 - max_angle/scan_list_size
-        down = down + value
+        down = down + scan_list_size[i]
     ans = up/down
     return ans
 
