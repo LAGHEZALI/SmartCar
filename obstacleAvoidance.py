@@ -117,9 +117,9 @@ try:
         x = int( scan_list_size/2 - int(ang_t) % int(scan_list_size / 2 ) )
         y = int( scan_list_size/2 + int(-ang_t) % int(scan_list_size / 2 ) )
         if ang_t > 0:
-            car.advance( x )
+            car.advance( scan_list[x] /2)
         else:
-            car.advance( y )
+            car.advance( scan_list[y] /2 )
 
         car.spinModulation(angle_to_sleep_time(-ang_t), 20)
 
