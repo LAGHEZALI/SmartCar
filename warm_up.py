@@ -172,11 +172,11 @@ try:
             dis = 0.0
             for i in range(30, 80, 10):
                 servo.setServo(i)
+                time.sleep(0.5)
                 dis = us.getDistance()
                 while dis > 1000 or dis < 5:
                     dis = us.getDistance()
                 scanList.append(dis)
-                time.sleep(2)
             servo.servoMiddle()
             print '  ===  '.join(map(str, scanList))
 
