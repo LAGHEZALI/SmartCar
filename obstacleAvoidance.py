@@ -100,11 +100,11 @@ try:
         obstacle = []
         for value in scan_list:
             if value < safety_distance:
-                obsacle.append(0)
+                obstacle.append(0)
             i += 1
         ang_t = get_r_angle(scan_list)
         directionToFin = get_angle(d_point, f_point)
-        if len(obsacle) == 0:
+        if len(obstacle) == 0:
             print 'Nothing here !'
         else:
             car.spinModulation(angle_to_sleep_time(ang_t), 20)
