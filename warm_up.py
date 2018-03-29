@@ -13,9 +13,9 @@ LEFT = 3
 DISTANCE = 20.0
 ANGLE = 90.0
 
-CAR_SPEED_FORWARD = 31.0 # a z e r 
-DELAY_360_RIGHT = 2.825 # j k l m
-DELAY_360_LEFT = 2.825 # q s d f
+CAR_SPEED_FORWARD = 31.0 # a z , e r t y
+DELAY_360_RIGHT = 2.825 # i o p , k l m
+DELAY_360_LEFT = 2.825 # q s d , f g h
 
 def readchar():
     fd = sys.stdin.fileno()
