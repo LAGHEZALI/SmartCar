@@ -102,10 +102,10 @@ def spinModulation(angle, steps):
     print '==== DELAY ====', angleToDelay(angle)
     if angle < 0:
         angle = -angle
-        for i in range(1,steps+1):
+        for i in range(1,steps):
             spinLeftFor(angleToDelay(angle)/steps)
     else:
-        for i in range(1,steps+1):
+        for i in range(1,steps):
             spinRightFor(angleToDelay(angle)/steps)
 
 def turnRight():
@@ -143,5 +143,5 @@ def nanoSpin(step):
         stop()
 
 def angleToDelay(angle):
-    return float(delay360) * 360 / float(angle)
+    return float(angle) * float(delay360) / 360
     
