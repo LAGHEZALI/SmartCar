@@ -83,9 +83,6 @@ def get_angle(p0, p1):
     return b
 
 
-def angle_to_sleep_time(angle):
-    return angle*0.7/90
-
 #   Our Algorithm
 
 print 'Obstacle Avoidance Program has Started ... Wish Me Good Luck !'
@@ -109,8 +106,9 @@ try:
 
         if len(obstacle) != 0:
             print 'start turning'
-            car.spinModulation(angle_to_sleep_time(ang_t), 20)
+            car.spinModulation(ang_t, 20)
             direction_goal = ang_t
+        else:
             ang_t = 0
         
         print 'advance'
@@ -121,7 +119,7 @@ try:
         else:
             car.advanceDistance( scan_list[y] /2 )
 
-        car.spinModulation(angle_to_sleep_time(-ang_t), 20)
+        car.spinModulation(-ang_t, 20)
 
 except KeyboardInterrupt:
     cleanup()

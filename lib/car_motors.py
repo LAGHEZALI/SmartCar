@@ -21,6 +21,8 @@ advanceTime = 0.8
 car_lenght = 25.25
 car_speed = 31.0
 
+delay360 = 2.8 # delay to spin 360 degree
+
 
 def init():
 
@@ -93,14 +95,14 @@ def spinRightFor(delay):
     time.sleep(delay)
     stop()
 
-def spinModulation(delay, steps):
-    if delay < 0:
-        delay = -delay
-        for i in range(1,steps):
-            spinLeftFor(delay/steps)
+def spinModulation(angle, steps):
+    if angle < 0:
+        angle = -angle
+        for i in range(1,steps+1):
+            spinLeftFor(angleToDelay(angle)/steps)
     else:
-        for i in range(1,steps):
-            spinRightFor(delay/steps)
+        for i in range(1,steps+1):
+            spinRightFor(angleToDelay(angle)/steps)
 
 def turnRight():
     spinRight()
@@ -136,3 +138,6 @@ def nanoSpin(step):
         time.sleep(step)
         stop()
 
+def angleToDelay(angle):
+    return float(delay360) * 360 / float(angle)
+    
