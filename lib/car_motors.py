@@ -96,8 +96,10 @@ def spinRightFor(delay):
     stop()
 
 def spinModulation(angle, steps):
+    print '==== ANGLE ====', angle
     if angle == 0:
         return
+    print '==== DELAY ====', angleToDelay(angle)
     if angle < 0:
         angle = -angle
         for i in range(1,steps+1):
