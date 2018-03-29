@@ -58,10 +58,6 @@ def scan():
     return scanList
 
 
-def distance(p1, p2):
-    return math.sqrt((p1[0] - p2[0])**2+(p1[1]-p2[1])**2)
-
-
 def get_r_angle(scanList):
     m = scan_list_size/2
     up = 0
@@ -97,25 +93,26 @@ try:
     while True:
         print 'start scan'
         scan_list = scan()
+        print '  ===  '.join(map(str, scanList))
         print 'end scan'
         i = 0
         obstacle = []
         for value in scan_list:
             if value < safety_distance:
-                obstacle.append(0)
+                obstacle.append(i)
             i += 1
         ang_t = get_r_angle(scan_list)
-        directionToFin = get_angle(d_point, f_point)
-        if len(obstacle) == 0:
-            print 'Nothing here !'
-        else:
+
+        if len(obstacle) != 0:
             car.spinModulation(angle_to_sleep_time(ang_t), 20)
             direction_goal = ang_t
+        
         if ang_t > 0:
-            car.advance(scan_list[int(5 - ang_t % 5)] / 2)
+            car.advance(scan_list[int(scan_list_size/2 - int(ang_t) % int(scan_list_size)/2)] / 2)
         else:
-            car.advance(scan_list[int(5 + (-ang_t) % 5)] / 2)
+            car.advance(scan_list[int(scan_list_size/2 + int(-ang_t) % int(scan_list_size/2)] / 2)
 
+        car.spinModulation(angle_to_sleep_time(-ang_t), 20)
 
 except KeyboardInterrupt:
     cleanup()
