@@ -28,7 +28,7 @@ try:
 
         distance = us.getDistance()
         
-        while (distance > critical_distance || distance < 5):
+        while (distance > critical_distance or distance < 5):
            
             distance = us.getDistance()
         
