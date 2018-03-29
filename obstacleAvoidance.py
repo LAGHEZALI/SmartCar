@@ -103,11 +103,14 @@ try:
                 obstacle.append(i)
             i += 1
         ang_t = get_r_angle(scan_list)
+        print 'ang_t =', ang_t
+
 
         if len(obstacle) != 0:
             print 'start turning'
             car.spinModulation(angle_to_sleep_time(ang_t), 20)
             direction_goal = ang_t
+            ang_t = 0
         
         print 'advance'
         if ang_t > 0:
