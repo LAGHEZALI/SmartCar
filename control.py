@@ -88,7 +88,7 @@ try:
             #car.spinLeftFor(0.7)
             print 'Turn Left 90 degree (Modulation)'
         elif keyp == '6':
-            car.spinModulation(ANGLE 20)
+            car.spinModulation(ANGLE, 20)
             #car.spinRightFor(0.7)
             print 'Turn Right 90 degree (Modulation)'
         elif keyp == '7':
