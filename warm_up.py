@@ -90,7 +90,7 @@ try:
             car.spinLeftModulationWarmUp(ANGLE, 20, DELAY_360_LEFT)
             print 'Turn Left with', ANGLE, 'deg'
         elif keyp == '6':
-            car.spinRightModulationWarmUp(ANGLE, 2, DELAY_360_RIGHT)
+            car.spinRightModulationWarmUp(ANGLE, 20, DELAY_360_RIGHT)
             print 'Turn Right with', ANGLE, 'deg'
         elif keyp == ' ':
             car.stop()
