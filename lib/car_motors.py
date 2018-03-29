@@ -18,7 +18,7 @@ Rtime = 0.8
 #advanceTime = 0.8
 
 advanceTime = 0.8
-car_lenght = 27
+car_lenght = 25.5
 
 
 def init():
