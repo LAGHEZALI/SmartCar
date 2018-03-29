@@ -21,7 +21,7 @@ advanceTime = 0.8
 car_lenght = 25.25
 car_speed = 31.0
 
-delay360 = 2.82 # delay to spin 360 degree
+delay360 = 2.825 # delay to spin 360 degree
 
 
 def init():
