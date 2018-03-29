@@ -166,6 +166,20 @@ try:
             print 'DELAY_360_LEFT =>', DELAY_360_LEFT, 's'
             print '================================================'
 
+        
+        elif keyp == '0':
+            scanList = []
+            dis = 0.0
+            for i in range(40, 70, 10):
+                servo.setServo(i)
+                dis = us.getDistance()
+                while dis > 1000 or dis < 5:
+                    dis = us.getDistance()
+                scanList.append(dis)
+                time.sleep(2)
+            servo.servoMiddle()
+            print '  ===  '.join(map(str, scanList))
+
         elif keyp == 'x':   
             break
 
