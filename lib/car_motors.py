@@ -19,6 +19,7 @@ Rtime = 0.8
 
 advanceTime = 0.8
 car_lenght = 25.25
+car_speed = 31
 
 
 def init():
@@ -122,7 +123,7 @@ def advanceDistance(distance):
         distance = -distance
     else:
         forward()
-    time.sleep(advanceTime*distance/car_lenght)
+    time.sleep(distance/car_speed)
     stop()
 
 def nanoSpin(step):
