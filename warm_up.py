@@ -98,45 +98,63 @@ try:
 
 
         elif keyp == 'a':
-            CAR_SPEED_FORWARD += 1
-            print 'CAR_SPEED_FORWARD +1 =>', CAR_SPEED_FORWARD, 'cm/s'
-        elif keyp == 'z':
             CAR_SPEED_FORWARD += 0.1
             print 'CAR_SPEED_FORWARD +0.1 =>', CAR_SPEED_FORWARD, 'cm/s'
-        elif keyp == 'e':
+        elif keyp == 'z':
             CAR_SPEED_FORWARD += 0.01
             print 'CAR_SPEED_FORWARD +0.01 =>', CAR_SPEED_FORWARD, 'cm/s'
-        elif keyp == 'r':
+        elif keyp == 'e':
             CAR_SPEED_FORWARD += 0.001
             print 'CAR_SPEED_FORWARD +0.001 =>', CAR_SPEED_FORWARD, 'cm/s'
+        elif keyp == 'r':
+            CAR_SPEED_FORWARD -= 0.1
+            print 'CAR_SPEED_FORWARD -0.1 =>', CAR_SPEED_FORWARD, 'cm/s'
+        elif keyp == 't':
+            CAR_SPEED_FORWARD -= 0.01
+            print 'CAR_SPEED_FORWARD -0.01 =>', CAR_SPEED_FORWARD, 'cm/s'
+        elif keyp == 'y':
+            CAR_SPEED_FORWARD -= 0.001
+            print 'CAR_SPEED_FORWARD -0.001 =>', CAR_SPEED_FORWARD, 'cm/s'
         
 
         elif keyp == 'q':
-            DELAY_360_LEFT += 1
-            print 'DELAY_360_LEFT +1 =>', DELAY_360_LEFT, 's'
-        elif keyp == 's':
             DELAY_360_LEFT += 0.1
             print 'DELAY_360_LEFT +0.1 =>', DELAY_360_LEFT, 's'
-        elif keyp == 'd':
+        elif keyp == 's':
             DELAY_360_LEFT += 0.01
             print 'DELAY_360_LEFT +0.01 =>', DELAY_360_LEFT, 's'
+        elif keyp == 'd':
+            DELAY_360_LEFT += 0.001
+            print 'DELAY_360_LEFT +0.001 =>', DELAY_360_LEFT, 's'
         elif keyp == 'f':
+            DELAY_360_LEFT += 0.1
+            print 'DELAY_360_LEFT +0.1 =>', DELAY_360_LEFT, 's'
+        elif keyp == 'g':
+            DELAY_360_LEFT += 0.01
+            print 'DELAY_360_LEFT +0.01 =>', DELAY_360_LEFT, 's'
+        elif keyp == 'h':
             DELAY_360_LEFT += 0.001
             print 'DELAY_360_LEFT +0.001 =>', DELAY_360_LEFT, 's'
 
 
-        elif keyp == 'j':
-            DELAY_360_RIGHT += 1
-            print 'DELAY_360_RIGHT +1 =>', DELAY_360_RIGHT, 's'
-        elif keyp == 'k':
+        elif keyp == 'i':
             DELAY_360_RIGHT += 0.1
             print 'DELAY_360_RIGHT +0.1 =>', DELAY_360_RIGHT, 's'
-        elif keyp == 'l':
+        elif keyp == 'o':
             DELAY_360_RIGHT += 0.01
             print 'DELAY_360_RIGHT +0.01 =>', DELAY_360_RIGHT, 's'
-        elif keyp == 'm':
+        elif keyp == 'p':
             DELAY_360_RIGHT += 0.001
             print 'DELAY_360_RIGHT +0.001 =>', DELAY_360_RIGHT, 's'
+         elif keyp == 'k':
+                DELAY_360_RIGHT -= 0.1
+            print 'DELAY_360_RIGHT -0.1 =>', DELAY_360_RIGHT, 's'
+        elif keyp == 'l':
+            DELAY_360_RIGHT -= 0.01
+            print 'DELAY_360_RIGHT -0.01 =>', DELAY_360_RIGHT, 's'
+        elif keyp == 'm':
+            DELAY_360_RIGHT -= 0.001
+            print 'DELAY_360_RIGHT -0.001 =>', DELAY_360_RIGHT, 's'
 
         
         elif keyp == '5':
