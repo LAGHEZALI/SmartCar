@@ -136,15 +136,14 @@ try:
         
         #   Quit the Program
 
-        elif keyp == 'x':
+        elif keyp == 'x':   
             break
 
         elif keyp == '5':
             scanList = []
-            for i in range(10, 100, 10):
-                time.sleep(0.3)
+            for i in range(10, 90, 5):
                 servo.setServo(i)
-                time.sleep(0.3)
+                time.sleep(0.6)
                 scanList.append(us.getDistance())
             print '  ===  '.join(map(str, scanList))
             servo.servoMiddle()
