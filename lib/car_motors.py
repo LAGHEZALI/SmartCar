@@ -19,7 +19,7 @@ Rtime = 0.8
 
 advanceTime = 0.8
 car_lenght = 25.25
-car_speed = 31
+car_speed = 31.0
 
 
 def init():
@@ -123,8 +123,6 @@ def advanceDistance(distance):
         distance = -distance
     else:
         forward()
-    delay = distance/car_speed
-    print 'delay =', delay
     time.sleep(distance/car_speed)
     stop()
 
