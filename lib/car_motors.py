@@ -145,23 +145,19 @@ def spinRightModulationWarmUp(angle, steps, delay):
         return
     if angle < 0:
         angle = -angle
-        for i in range(1,steps+1):
-            spinLeftFor(angleToDelayWarmUp(angle, delay)/steps)
-    else:
-        for i in range(1,steps+1):
-            spinRightFor(angleToDelayWarmUp(angle, delay)/steps)
-
+    for i in range(1,steps+1):
+        spinLeftFor(angleToDelayWarmUp(angle, delay)/steps)
+        time.sleep(0.1)
+        
 
 def spinLeftModulationWarmUp(angle, steps, delay):
     if angle == 0:
         return
     if angle < 0:
         angle = -angle
-        for i in range(1,steps+1):
-            spinRightFor(angleToDelayWarmUp(angle, delay)/steps)
-    else:
-        for i in range(1,steps+1):
-            spinLeftFor(angleToDelayWarmUp(angle, delay)/steps)
+    for i in range(1,steps+1):
+        spinRightFor(angleToDelayWarmUp(angle, delay)/steps)
+        time.sleep(0.1)
 
 
 def advanceDistanceWarmUp(distance, cs):
