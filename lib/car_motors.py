@@ -113,6 +113,16 @@ def advance(step):
     time.sleep(advanceTime*step)
     stop()
 
+
+def advanceDistance(distance):
+    if step < 0:
+        reverse()
+        step = -step
+    else:
+        forward()
+    time.sleep(advanceTime*distance/24)
+    stop()
+
 def nanoSpin(step):
     if step > 0:
         spinRight()

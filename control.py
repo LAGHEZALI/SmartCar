@@ -10,6 +10,8 @@ DOWN = 1
 RIGHT = 2
 LEFT = 3
 
+DF3A = 24
+
 def readchar():
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
@@ -74,10 +76,10 @@ try:
             car.spinLeft()
             print 'Spin Left'
         elif keyp == '8':
-            car.advance(1)
+            car.advance(DF3A)
             print 'Advance 1 Step'
         elif keyp == '2':
-            car.advance(-1)
+            car.advance(-DF3A)
             print 'Advance -1 Step'
         elif keyp == '4':
             car.spinModulation(-0.8, 20)
@@ -147,6 +149,12 @@ try:
                 scanList.append(us.getDistance())
             print '  ===  '.join(map(str, scanList))
             servo.servoMiddle()
+
+        elif keyp == 'v':
+            DF3A += 1
+        
+        elif keyp == 'b':
+            DF3A -= 1    
 
 
     cleanup()
