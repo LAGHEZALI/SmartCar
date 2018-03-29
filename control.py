@@ -152,9 +152,11 @@ try:
 
         elif keyp == 'v':
             DF3A += 1
+            print 'DF3A =', DF3A
         
         elif keyp == 'b':
-            DF3A -= 1    
+            DF3A -= 1
+            print 'DF3A =', DF3A    
 
 
     cleanup()
