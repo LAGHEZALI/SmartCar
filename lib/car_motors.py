@@ -123,6 +123,8 @@ def advanceDistance(distance):
         distance = -distance
     else:
         forward()
+    delay = distance/car_speed
+    print 'delay =', delay
     time.sleep(distance/car_speed)
     stop()
 
