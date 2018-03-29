@@ -74,10 +74,10 @@ try:
             print 'DISTANCE -- =>', DISTANCE, 'cm'
         elif keyp == RIGHT:
             ANGLE += 1
-            print 'ANGLE ++ =>', ANGLE, '°'
+            print 'ANGLE ++ =>', ANGLE, 'deg'
         elif keyp == LEFT:
             ANGLE -= 1
-            print 'ANGLE -- =>', ANGLE, '°'
+            print 'ANGLE -- =>', ANGLE, 'deg'
 
 
         elif keyp == '8':
@@ -88,10 +88,10 @@ try:
             print 'Advance with -DISTANCE=', -DISTANCE
         elif keyp == '4':
             car.spinLeftModulationWarmUp(-ANGLE, 20, DELAY_360_LEFT)
-            print 'Turn Left with', -ANGLE, '°'
+            print 'Turn Left with', -ANGLE, 'deg'
         elif keyp == '6':
             car.spinRightModulationWarmUp(ANGLE, 2, DELAY_360_RIGHT)
-            print 'Turn Right with', ANGLE, '°'
+            print 'Turn Right with', ANGLE, 'deg'
         elif keyp == ' ':
             car.stop()
             print 'Stop'
@@ -141,9 +141,9 @@ try:
         
         elif keyp == '5':
             print '================================================'
-            print 'DISTANCE =>', DISTANCE, 's'
-            print 'ANGLE =>', ANGLE, 's'
-            print 'CAR_SPEED_FORWARD =>', CAR_SPEED_FORWARD, 's'
+            print 'DISTANCE =>', DISTANCE, 'cm'
+            print 'ANGLE =>', ANGLE, 'deg'
+            print 'CAR_SPEED_FORWARD =>', CAR_SPEED_FORWARD, 'cm/s'
             print 'DELAY_360_RIGHT =>', DELAY_360_RIGHT, 's'
             print 'DELAY_360_LEFT =>', DELAY_360_LEFT, 's'
             print '================================================'
