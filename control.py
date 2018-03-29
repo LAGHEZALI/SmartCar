@@ -10,7 +10,9 @@ DOWN = 1
 RIGHT = 2
 LEFT = 3
 
-DF3A = 24
+DF3A = 24.0
+
+ANGLE = 90.0
 
 def readchar():
     fd = sys.stdin.fileno()
@@ -82,11 +84,11 @@ try:
             car.advanceDistance(float(-DF3A))
             print 'Advance with DF3A=', DF3A
         elif keyp == '4':
-            car.spinModulation(-0.8, 20)
+            car.spinModulation(-ANGLE, 20)
             #car.spinLeftFor(0.7)
             print 'Turn Left 90 degree (Modulation)'
         elif keyp == '6':
-            car.spinModulation(0.8, 20)
+            car.spinModulation(ANGLE 20)
             #car.spinRightFor(0.7)
             print 'Turn Right 90 degree (Modulation)'
         elif keyp == '7':
@@ -156,7 +158,15 @@ try:
         
         elif keyp == 'b':
             DF3A -= 1
-            print 'DF3A =', DF3A    
+            print 'DF3A =', DF3A
+            
+        elif keyp == 'e':
+            ANGLE += 1
+            print 'ANGLE =', ANGLE
+        
+        elif keyp == 'r':
+            ANGLE -= 1
+            print 'ANGLE =', ANGLE
 
 
     cleanup()
