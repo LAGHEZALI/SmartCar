@@ -113,9 +113,9 @@ try:
             ang_t = 0
         
         print 'advance'
+        x = int( scan_list_size/2 - int(ang_t) % int(scan_list_size / 2 ) )
+        y = int( scan_list_size/2 + int(-ang_t) % int(scan_list_size / 2 ) )
         if ang_t > 0:
-            x = int( scan_list_size/2 - int(ang_t) % int(scan_list_size / 2 ) )
-            y = int( scan_list_size/2 + int(-ang_t) % int(scan_list_size / 2 ) )
             car.advance( x )
         else:
             car.advance( y )
