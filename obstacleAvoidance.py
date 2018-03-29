@@ -33,7 +33,7 @@ right_turn_sleep = 0.7
 safety_distance = 20
 max_angle = 180
 scan_list = []
-scan_list_size = 11
+scan_list_size = 10
 d_point = [50, 50]
 f_point = [50, 10000050]
 direction_goal = 0
@@ -49,9 +49,10 @@ servo.init()
 
 def scan():
     scanList = []
-    for i in range(10, 100, 10):
+    for i in range(10, 110, 10):
+        print 'i =',i
         servo.setServo(i)
-        time.sleep(0.6)
+        time.sleep(1)
         scanList.append(us.getDistance())
     servo.servoMiddle()
     return scanList
@@ -115,11 +116,11 @@ try:
         x = int( scan_list_size/2 - int(ang_t) % int(scan_list_size / 2 ) )
         y = int( scan_list_size/2 + int(-ang_t) % int(scan_list_size / 2 ) )
         if ang_t > 0:
-            print 'advance with', (scan_list[x] /2)
-            car.advanceDistance( scan_list[x] /2)
+            print 'advance with', (scan_list[x] /3)
+            car.advanceDistance( scan_list[x] /3)
         else:
-            print 'advance with', (scan_list[y] /2)
-            car.advanceDistance( scan_list[y] /2 )
+            print 'advance with', (scan_list[y] /3)
+            car.advanceDistance( scan_list[y] /3 )
 
         car.spinModulation(-ang_t, 20)
 
