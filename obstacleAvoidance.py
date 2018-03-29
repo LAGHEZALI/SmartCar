@@ -112,9 +112,9 @@ try:
             car.spinModulation(angle_to_sleep_time(ang_t), 20)
             direction_goal = ang_t
         if ang_t > 0:
-            car.advance(scan_list[5 - ang_t % 5] / 2)
+            car.advance(scan_list[int(5 - ang_t % 5)] / 2)
         else:
-            car.advance(scan_list[5 + (-ang_t) % 5] / 2)
+            car.advance(scan_list[int(5 + (-ang_t) % 5)] / 2)
 
 
 except KeyboardInterrupt:
