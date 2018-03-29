@@ -50,9 +50,8 @@ servo.init()
 def scan():
     scanList = []
     for i in range(10, 100, 10):
-        time.sleep(0.3)
         servo.setServo(i)
-        time.sleep(0.3)
+        time.sleep(0.6)
         scanList.append(us.getDistance())
     servo.servoMiddle()
     return scanList
