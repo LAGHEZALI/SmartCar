@@ -87,8 +87,8 @@ try:
             car.advanceDistanceWarmUp(-DISTANCE, CAR_SPEED_FORWARD)
             print 'Advance with -DISTANCE=', -DISTANCE
         elif keyp == '4':
-            car.spinLeftModulationWarmUp(-ANGLE, 20, DELAY_360_LEFT)
-            print 'Turn Left with', -ANGLE, 'deg'
+            car.spinLeftModulationWarmUp(ANGLE, 20, DELAY_360_LEFT)
+            print 'Turn Left with', ANGLE, 'deg'
         elif keyp == '6':
             car.spinRightModulationWarmUp(ANGLE, 2, DELAY_360_RIGHT)
             print 'Turn Right with', ANGLE, 'deg'
