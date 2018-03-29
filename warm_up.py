@@ -147,7 +147,7 @@ try:
             DELAY_360_RIGHT += 0.001
             print 'DELAY_360_RIGHT +0.001 =>', DELAY_360_RIGHT, 's'
          elif keyp == 'k':
-                DELAY_360_RIGHT -= 0.1
+            DELAY_360_RIGHT -= 0.1
             print 'DELAY_360_RIGHT -0.1 =>', DELAY_360_RIGHT, 's'
         elif keyp == 'l':
             DELAY_360_RIGHT -= 0.01
