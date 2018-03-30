@@ -30,10 +30,10 @@ distance = 0.0
 left_turn_sleep = 0.7
 right_turn_sleep = 0.7
 
-safety_distance = 40
+safety_distance = 20
 max_angle = 180.0
 scan_list = []
-scan_list_size = 21
+scan_list_size = 11
 d_point = [50, 50]
 f_point = [50, 10000050]
 direction_goal = 0
@@ -56,11 +56,11 @@ servo.init()
 def scan():
     scan_list = []
     dis = 0.0
-    for i in range(0, 105, 5):
+    for i in range(0, 110, 9):
         servo.setServo(i)
         time.sleep(0.5)
         dis = us.getDistance()
-        while dis > 1000 or dis < 5:
+        while dis > 800 or dis < 5:
             print 'dis =', dis
             dis = us.getDistance()
         scan_list.append(dis)
@@ -69,13 +69,11 @@ def scan():
 
 
 def get_r_angle(scanList):
-    m = scan_list_size/2
+    m = scan_list_size/2.0
     up = 0
     down = 0
-    a0 = max_angle/scan_list_size * scan_list_size/2
+    a0 = max_angle/scan_list_size * scan_list_size/2.0
     for i in range(0, scan_list_size):
-        if scan_list[i] >=1000 or scan_list[i]<=5:
-            scan_list[i] =  safety_distance-1
         up += a0 * scan_list[i]
         a0 = a0 - max_angle/scan_list_size
         down = down + scan_list[i]
@@ -116,7 +114,7 @@ try:
         # la position de l angle de vers la position initial
         x = int( scan_list_size/2 - int(angle_to_direction) % int(scan_list_size / 2 ) )
         y = int( scan_list_size/2 + int(-angle_to_direction) % int(scan_list_size / 2 ) )
-        
+
         if angle_to_direction > 0:
             if scan_list[x] >= safety_distance+20:
                 print '*************************'
@@ -129,15 +127,15 @@ try:
                 car.spinModulationWarmUp(angle_to_direction,20,DELAY_360_RIGHT, DELAY_360_LEFT)
                 angle_to_direction = 0
                 continue
-            
+
         if len(obstacle) != 0:
             print 'start turning with the anglee f ===========>',ang_t
             car.spinModulationWarmUp(ang_t, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
             angle_to_direction = int(angle_to_direction - ang_t) % 360
         else:
             ang_t = 0
-        
-        
+
+
         x = int( scan_list_size/2 - int(ang_t) % int(scan_list_size / 2 ) )
         y = int( scan_list_size/2 + int(-ang_t) % int(scan_list_size / 2 ) )
         if ang_t > 0:
@@ -150,7 +148,7 @@ try:
             car.advanceDistanceWarmUp( scan_list[y] /2 , CAR_SPEED_FORWARD)
             if angle_to_direction != 0:
                 distance_to_direction += math.cos(ang_t)*scan_list[y]/2
-        
+
         car.spinModulationWarmUp(-ang_t,20,DELAY_360_RIGHT, DELAY_360_LEFT)
 
 
