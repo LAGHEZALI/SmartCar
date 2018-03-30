@@ -4,7 +4,7 @@ import tty
 import termios
 from socket import *
 
-fun.init()
+servo.init()
 
 HOST = ''
 PORT = 21567
