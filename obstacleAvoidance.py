@@ -119,13 +119,13 @@ try:
         
         if angle_to_direction > 0:
             if scan_list[x] >= safety_distance+20:
-                
+                print '*************************'
                 car.spinModulationWarmUp(angle_to_direction,20,DELAY_360_RIGHT, DELAY_360_LEFT)
                 angle_to_direction = 0
                 continue
         elif angle_to_direction <0:
             if scan_list[y] >= safety_distance+20:
-                
+                print '*************************'
                 car.spinModulationWarmUp(angle_to_direction,20,DELAY_360_RIGHT, DELAY_360_LEFT)
                 angle_to_direction = 0
                 continue
