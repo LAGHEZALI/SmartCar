@@ -116,8 +116,8 @@ try:
         # la position de l angle de vers la position initial
         x = int( scan_list_size/2 - int(angle_to_direction) % int(scan_list_size / 2 ) )
         y = int( scan_list_size/2 + int(-angle_to_direction) % int(scan_list_size / 2 ) )
-
-       if angle_to_direction > 0:
+        
+        if angle_to_direction > 0:
             if scan_list[x] >= safety_distance+70:
                 car.spinModulationWarmUp(-angle_to_direction,20,DELAY_360_RIGHT, DELAY_360_LEFT)
                 angle_to_direction = 0
