@@ -139,13 +139,13 @@ try:
         y = int( scan_list_size/2 + int(-ang_t) % int(scan_list_size / 2 ) )
         if ang_t > 0:
             print 'advance with', (scan_list[x] /3)
-            car.advanceDistance( scan_list[x] /3)
+            car.advanceDistanceWarmUp( scan_list[x] /3, CAR_SPEED_FORWARD)
             if angle_to_direction != 0:
                 distance_to_direction += math.cos(ang_t)*scan_list[x]/3
             car.spinRightModulationWarmUp(ang_t,20, DELAY_360_RIGHT)
         else:
             print 'advance with', (scan_list[y] /3)
-            car.advanceDistance( scan_list[y] /3 )
+            car.advanceDistanceWarmUp( scan_list[y] /3 , CAR_SPEED_FORWARD)
             if angle_to_direction != 0:
                 distance_to_direction += math.cos(ang_t)*scan_list[y]/3
             car.spinLeftModulationWarmUp(-ang_t,20, DELAY_360_LEFT)
