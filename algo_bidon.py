@@ -27,6 +27,7 @@ DELAY_360_RIGHT = 3.1 # i o p , k l m
 DELAY_360_LEFT = 3.231 # q s d , f g h
 
 bool_turn = True;
+is_turning = 0 # 0 : no, 1: right, -1:left
 
 us.init()
 car.init()
@@ -55,18 +56,40 @@ def find_obstacle():
 try:
     while True:
         
-        if find_obstacle() == False:
-            print 'Moving Forward ...'
-            car.advanceDistanceWarmUp(critical_distance/2, CAR_SPEED_FORWARD)
-        else:
-            if bool_turn ==  True:
-                print 'Turning Right ...'
-                car.spinModulationWarmUp(90, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
+        if is_turning == 0:
+            if find_obstacle() == False:
+                print 'Moving Forward ...'
+                car.advanceDistanceWarmUp(critical_distance/2, CAR_SPEED_FORWARD)
             else:
-                print 'Turning Left ...'
-                car.spinModulationWarmUp(-90, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
-            bool_turn != bool_turn
-        
+                if bool_turn ==  True:
+                    print 'Turning Right ...'
+                    car.spinModulationWarmUp(90, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
+                    is_turning = 1
+                else:
+                    print 'Turning Left ...'
+                    car.spinModulationWarmUp(-90, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
+                    is_turning = -1
+                bool_turn != bool_turn
+
+        elif is_turning == 1:
+            servo.servoLeft()
+            #search for hawta
+            car.advanceDistanceWarmUp(25, CAR_SPEED_FORWARD)
+            while us.getDistance() < critical_distance:
+                car.advanceDistanceWarmUp(25, CAR_SPEED_FORWARD)
+            car.spinModulationWarmUp(-90, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
+            servo.servoMiddle()
+            is_turning = 0
+
+        elif is_turning == -1:
+            servo.servoRight()
+            #search for hawta
+            car.advanceDistanceWarmUp(25, CAR_SPEED_FORWARD)
+            while us.getDistance() < critical_distance:
+                car.advanceDistanceWarmUp(25, CAR_SPEED_FORWARD)
+            car.spinModulationWarmUp(90, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
+            servo.servoMiddle()
+            is_turning = 0
 
 except KeyboardInterrupt:
     cleanup()
