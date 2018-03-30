@@ -73,25 +73,39 @@ try:
                     bool_turn = True
                 print 'bool turn = ', bool_turn
 
-        elif is_turning == 1:
+        if is_turning == 1:
             servo.servoLeft()
+            time.sleep(1)
             #search for hawta
             car.advanceDistanceWarmUp(25, CAR_SPEED_FORWARD)
             while us.getDistance() < critical_distance:
-                car.advanceDistanceWarmUp(25, CAR_SPEED_FORWARD)
-            car.spinModulationWarmUp(-90, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
-            servo.servoMiddle()
-            is_turning = 0
+                servo.servoMiddle()
+                time.sleep(1)
+                if us.getDistance() < critical_distance: # obstacle in front while searching for hawta
+                    car.spinModulationWarmUp(180, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
+                    is_turning = -1
+                else:
+                    car.advanceDistanceWarmUp(25, CAR_SPEED_FORWARD)
+            if is_turning == 1:
+                car.spinModulationWarmUp(-90, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
+                is_turning = 0
 
-        elif is_turning == -1:
+        if is_turning == -1:
             servo.servoRight()
+            time.sleep(1)
             #search for hawta
             car.advanceDistanceWarmUp(25, CAR_SPEED_FORWARD)
             while us.getDistance() < critical_distance:
-                car.advanceDistanceWarmUp(25, CAR_SPEED_FORWARD)
-            car.spinModulationWarmUp(90, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
-            servo.servoMiddle()
-            is_turning = 0
+                servo.servoMiddle()
+                time.sleep(1)
+                if us.getDistance() < critical_distance: # obstacle in front while searching for hawta
+                    car.spinModulationWarmUp(-180, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
+                    is_turning = 1
+                else:
+                    car.advanceDistanceWarmUp(25, CAR_SPEED_FORWARD)
+            if is_turning == -1:
+                car.spinModulationWarmUp(90, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
+                is_turning = 0
 
 except KeyboardInterrupt:
     cleanup()
