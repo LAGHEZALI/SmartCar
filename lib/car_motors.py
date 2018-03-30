@@ -161,6 +161,12 @@ def spinLeftModulationWarmUp(angle, steps, delay):
         stop()
 
 
+def spinModulationWarmUp(angle, steps, delayR, delayL):
+    if angle > 0:
+        spinRightModulationWarmUp(angle, steps, delayR)
+    else:
+        spinLeftModulationWarmUp(-angle, steps, delayL)
+
 def advanceDistanceWarmUp(distance, cs):
     if distance < 0:
         reverse()

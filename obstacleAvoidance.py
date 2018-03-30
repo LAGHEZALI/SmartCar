@@ -119,19 +119,19 @@ try:
 
         if angle_to_direction > 0:
             if scan_list[x] >= safety_distance:
-                car.spinRightModulationWarmUp(angle_to_direction,20,DELAY_360_RIGHT)
+                car.spinModulationWarmUp(-angle_to_direction,20,DELAY_360_RIGHT, DELAY_360_LEFT)
                 angle_to_direction = 0
                 continue
         elif angle_to_direction <0:
             if scan_list[y] >= safety_distance:
-                car.spinLeftModulationWarmUp(-angle_to_direction,20, DELAY_360_LEFT)
+                car.spinModulationWarmUp(-angle_to_direction,20,DELAY_360_RIGHT, DELAY_360_LEFT)
                 angle_to_direction = 0
                 continue
             
         if len(obstacle) != 0:
             print 'start turning'
-            car.spinModulation(ang_t, 20)
-            angle_to_direction = angle_to_direction + ang_t
+            car.spinModulationWarmUp(ang_t, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
+            angle_to_direction = int(angle_to_direction + ang_t) % 360
         else:
             ang_t = 0
         
@@ -143,13 +143,13 @@ try:
             car.advanceDistanceWarmUp( scan_list[x] /3, CAR_SPEED_FORWARD)
             if angle_to_direction != 0:
                 distance_to_direction += math.cos(ang_t)*scan_list[x]/3
-            car.spinRightModulationWarmUp(ang_t,20, DELAY_360_RIGHT)
         else:
             print 'advance with', (scan_list[y] /3)
             car.advanceDistanceWarmUp( scan_list[y] /3 , CAR_SPEED_FORWARD)
             if angle_to_direction != 0:
                 distance_to_direction += math.cos(ang_t)*scan_list[y]/3
-            car.spinLeftModulationWarmUp(-ang_t,20, DELAY_360_LEFT)
+                
+        car.spinLeftModulationWarmUp(-ang_t,20, DELAY_360_LEFT)
 
 
 except KeyboardInterrupt:
