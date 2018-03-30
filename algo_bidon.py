@@ -65,11 +65,12 @@ try:
                     print 'Turning Right ...'
                     car.spinModulationWarmUp(90, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
                     is_turning = 1
+                    bool_turn = False
                 else:
                     print 'Turning Left ...'
                     car.spinModulationWarmUp(-90, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
                     is_turning = -1
-                bool_turn != bool_turn
+                    bool_turn = True
                 print 'bool turn = ', bool_turn
 
         elif is_turning == 1:
