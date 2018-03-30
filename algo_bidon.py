@@ -22,8 +22,6 @@ DELAY_360_LEFT = 3.231 # q s d , f g h
 
 bool_turn = True;
 
-scan_list
-
 us.init()
 car.init()
 
