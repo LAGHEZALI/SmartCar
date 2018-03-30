@@ -56,7 +56,7 @@ servo.init()
 def scan():
     scan_list = []
     dis = 0.0
-    for i in range(0, 100, 5):
+    for i in range(0, 105, 5):
         servo.setServo(i)
         time.sleep(0.5)
         dis = us.getDistance()
