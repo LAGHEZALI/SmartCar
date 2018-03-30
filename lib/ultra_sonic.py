@@ -20,11 +20,9 @@ def cleanup():
     GPIO.cleanup()
 
 def getDistance():
-    GPIO.output(trig, False)
-    time.sleep(0.1)
 
     GPIO.output(trig, True)
-    time.sleep(0.001)
+    time.sleep(0.00001)
     GPIO.output(trig, False)
     
     while GPIO.input(echo)==0:
