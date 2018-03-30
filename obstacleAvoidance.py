@@ -118,12 +118,12 @@ try:
         y = int( scan_list_size/2 + int(-angle_to_direction) % int(scan_list_size / 2 ) )
         
         if angle_to_direction > 0:
-            if scan_list[x] >= safety_distance+70:
+            if scan_list[x] >= safety_distance+20:
                 car.spinModulationWarmUp(-angle_to_direction,20,DELAY_360_RIGHT, DELAY_360_LEFT)
                 angle_to_direction = 0
                 continue
         elif angle_to_direction <0:
-            if scan_list[y] >= safety_distance+70:
+            if scan_list[y] >= safety_distance+20:
                 car.spinModulationWarmUp(-angle_to_direction,20,DELAY_360_RIGHT, DELAY_360_LEFT)
                 angle_to_direction = 0
                 continue
@@ -140,14 +140,14 @@ try:
         y = int( scan_list_size/2 + int(-ang_t) % int(scan_list_size / 2 ) )
         if ang_t > 0:
             print 'advance with', (scan_list[x]), '/3'
-            car.advanceDistanceWarmUp( scan_list[x] /3, CAR_SPEED_FORWARD)
+            car.advanceDistanceWarmUp( scan_list[x] /2, CAR_SPEED_FORWARD)
             if angle_to_direction != 0:
-                distance_to_direction += math.cos(ang_t)*scan_list[x]/3
+                distance_to_direction += math.cos(ang_t)*scan_list[x]/2
         else:
             print 'advance with', (scan_list[y]), '/3'
-            car.advanceDistanceWarmUp( scan_list[y] /3 , CAR_SPEED_FORWARD)
+            car.advanceDistanceWarmUp( scan_list[y] /2 , CAR_SPEED_FORWARD)
             if angle_to_direction != 0:
-                distance_to_direction += math.cos(ang_t)*scan_list[y]/3
+                distance_to_direction += math.cos(ang_t)*scan_list[y]/2
 
        # car.spinModulationWarmUp(-ang_t,20,DELAY_360_RIGHT, DELAY_360_LEFT)
 
