@@ -33,7 +33,7 @@ right_turn_sleep = 0.7
 safety_distance = 40
 max_angle = 180.0
 scan_list = []
-scan_list_size = 21
+scan_list_size = 9
 d_point = [50, 50]
 f_point = [50, 10000050]
 direction_goal = 0
@@ -56,7 +56,7 @@ servo.init()
 def scan():
     scan_list = []
     dis = 0.0
-    for i in range(0, 105, 5):
+    for i in range(0, 90, 10):
         servo.setServo(i)
         time.sleep(0.5)
         dis = us.getDistance()
@@ -111,6 +111,8 @@ try:
             if value < safety_distance:
                 obstacle.append(i)
             i += 1
+
+        # appli
         ang_t = get_r_angle(scan_list)
         print 'ang_t =', ang_t
      
