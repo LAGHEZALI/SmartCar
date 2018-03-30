@@ -148,8 +148,8 @@ try:
             car.advanceDistanceWarmUp( scan_list[y] /3 , CAR_SPEED_FORWARD)
             if angle_to_direction != 0:
                 distance_to_direction += math.cos(ang_t)*scan_list[y]/3
-                
-        car.spinLeftModulationWarmUp(-ang_t,20, DELAY_360_LEFT)
+
+        car.spinModulationWarmUp(-ang_t,20,DELAY_360_RIGHT, DELAY_360_LEFT)
 
 
 except KeyboardInterrupt:
