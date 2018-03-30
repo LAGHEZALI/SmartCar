@@ -33,7 +33,7 @@ right_turn_sleep = 0.7
 safety_distance = 20
 max_angle = 180
 scan_list = []
-scan_list_size = 10
+scan_list_size = 9
 d_point = [50, 50]
 f_point = [50, 10000050]
 direction_goal = 0
@@ -54,14 +54,17 @@ servo.init()
 
 
 def scan():
-    scanList = []
-    for i in range(10, 110, 10):
-        print 'i =',i
+    scan_list = []
+    dis = 0.0
+    for i in range(10, 100, 10):
         servo.setServo(i)
-        time.sleep(1)
-        scanList.append(us.getDistance())
+        time.sleep(0.5)
+        dis = us.getDistance()
+        while dis > 1000 or dis < 5:
+            dis = us.getDistance()
+        scan_list.append(dis)
     servo.servoMiddle()
-    return scanList
+    return scan_list
 
 
 def get_r_angle(scanList):
