@@ -33,8 +33,7 @@ right_turn_sleep = 0.7
 safety_distance = 40
 max_angle = 180.0
 scan_list = []
-scan_list_size = 10
-
+scan_list_size = 21
 d_point = [50, 50]
 f_point = [50, 10000050]
 direction_goal = 0
@@ -57,7 +56,7 @@ servo.init()
 def scan():
     scan_list = []
     dis = 0.0
-    for i in range(0, 110, 10):
+    for i in range(0, 105, 5):
         servo.setServo(i)
         time.sleep(0.5)
         dis = us.getDistance()
@@ -112,11 +111,25 @@ try:
             if value < safety_distance:
                 obstacle.append(i)
             i += 1
-
-        # appli
         ang_t = get_r_angle(scan_list)
         print 'ang_t =', ang_t
-     
+        # la position de l angle de vers la position initial
+        x = int( scan_list_size/2 - int(angle_to_direction) % int(scan_list_size / 2 ) )
+        y = int( scan_list_size/2 + int(-angle_to_direction) % int(scan_list_size / 2 ) )
+        
+        if angle_to_direction > 0:
+            if scan_list[x] >= safety_distance+20:
+                print '*************************'
+                car.spinModulationWarmUp(angle_to_direction,20,DELAY_360_RIGHT, DELAY_360_LEFT)
+                angle_to_direction = 0
+                continue
+        elif angle_to_direction <0:
+            if scan_list[y] >= safety_distance+20:
+                print '*************************'
+                car.spinModulationWarmUp(angle_to_direction,20,DELAY_360_RIGHT, DELAY_360_LEFT)
+                angle_to_direction = 0
+                continue
+            
         if len(obstacle) != 0:
             print 'start turning with the anglee f ===========>',ang_t
             car.spinModulationWarmUp(ang_t, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
@@ -129,12 +142,12 @@ try:
         y = int( scan_list_size/2 + int(-ang_t) % int(scan_list_size / 2 ) )
         if ang_t > 0:
             print 'advance with', (scan_list[x]), '/3'
-            car.advanceDistanceWarmUp( scan_list[x] /3, CAR_SPEED_FORWARD)
+            car.advanceDistanceWarmUp( scan_list[x] /2, CAR_SPEED_FORWARD)
             if angle_to_direction != 0:
                 distance_to_direction += math.cos(ang_t)*scan_list[x]/2
         else:
             print 'advance with', (scan_list[y]), '/3'
-            car.advanceDistanceWarmUp( scan_list[y] /3 , CAR_SPEED_FORWARD)
+            car.advanceDistanceWarmUp( scan_list[y] /2 , CAR_SPEED_FORWARD)
             if angle_to_direction != 0:
                 distance_to_direction += math.cos(ang_t)*scan_list[y]/2
         
