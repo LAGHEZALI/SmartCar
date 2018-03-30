@@ -33,7 +33,8 @@ right_turn_sleep = 0.7
 safety_distance = 40
 max_angle = 180.0
 scan_list = []
-scan_list_size = 9
+scan_list_size = 10
+
 d_point = [50, 50]
 f_point = [50, 10000050]
 direction_goal = 0
@@ -56,7 +57,7 @@ servo.init()
 def scan():
     scan_list = []
     dis = 0.0
-    for i in range(0, 90, 10):
+    for i in range(0, 100, 10):
         servo.setServo(i)
         time.sleep(0.5)
         dis = us.getDistance()
@@ -128,12 +129,12 @@ try:
         y = int( scan_list_size/2 + int(-ang_t) % int(scan_list_size / 2 ) )
         if ang_t > 0:
             print 'advance with', (scan_list[x]), '/3'
-            car.advanceDistanceWarmUp( scan_list[x] /2, CAR_SPEED_FORWARD)
+            car.advanceDistanceWarmUp( scan_list[x] /3, CAR_SPEED_FORWARD)
             if angle_to_direction != 0:
                 distance_to_direction += math.cos(ang_t)*scan_list[x]/2
         else:
             print 'advance with', (scan_list[y]), '/3'
-            car.advanceDistanceWarmUp( scan_list[y] /2 , CAR_SPEED_FORWARD)
+            car.advanceDistanceWarmUp( scan_list[y] /3 , CAR_SPEED_FORWARD)
             if angle_to_direction != 0:
                 distance_to_direction += math.cos(ang_t)*scan_list[y]/2
         
