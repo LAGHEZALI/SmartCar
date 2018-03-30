@@ -70,6 +70,7 @@ try:
                     car.spinModulationWarmUp(-90, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
                     is_turning = -1
                 bool_turn != bool_turn
+                print 'bool turn = ', bool_turn
 
         elif is_turning == 1:
             servo.servoLeft()
