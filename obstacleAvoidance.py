@@ -61,6 +61,7 @@ def scan():
         time.sleep(0.5)
         dis = us.getDistance()
         while dis > 1000 or dis < 5:
+            print 'dis =', dis
             dis = us.getDistance()
         scan_list.append(dis)
     servo.servoMiddle()
