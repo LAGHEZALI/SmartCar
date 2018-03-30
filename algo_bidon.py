@@ -55,8 +55,9 @@ def find_obstacle():
 
 try:
     while True:
-        
-        if is_turning == 0:
+    
+    
+    if is_turning == 0:
             if find_obstacle() == False:
                 print 'Moving Forward ...'
                 car.advanceDistanceWarmUp(critical_distance/2, CAR_SPEED_FORWARD)

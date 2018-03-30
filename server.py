@@ -1,4 +1,4 @@
-import my_functions as fun
+import lib.servo_motor as servo
 import sys
 import tty
 import termios
@@ -25,7 +25,7 @@ while True:
                         data = tcpCliSock.recv(BUFSIZE)
                         if not data:
                                 break
-                        fun.setServo(int(data))
+                        servo.setServo(int(data))
                         print 'Servo Position', '=', int(data)
         except KeyboardInterrupt:
                 fun.stopServo()

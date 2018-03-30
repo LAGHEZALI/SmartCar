@@ -68,6 +68,21 @@ def scan():
     return scan_list
 
 
+def scan_devantaz()
+    sc = []
+    dis = 0.0
+    for i in range(25,100,25):
+        servo.setServo(i)
+        time.sleep(0.5)
+        dis = us.getDistance()
+        while dis > 1000 or dis < 5:
+            print 'dis =', dis
+            dis = us.getDistance()
+        sc.append(dis)   
+    for i in range(0,4,1):
+        if sc[i]<safety_distance 
+            return 1
+    return 0
 def get_r_angle(scanList):
     m = scan_list_size/2
     up = 0
