@@ -137,7 +137,7 @@ def angleToDelay(angle):
 
 
 def angleToDelayWarmUp(angle, delay):
-    return float(angle) * float(delay) / 360
+    return float( (int(angle)%361) ) * float(delay) / 360
     
 
 def spinRightModulationWarmUp(angle, steps, delay):

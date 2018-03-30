@@ -37,6 +37,12 @@ scan_list_size = 10
 d_point = [50, 50]
 f_point = [50, 10000050]
 direction_goal = 0
+angle_to_direction = 0
+distance_to_direction = 0
+
+CAR_SPEED_FORWARD = 30.5 # a z , e r t y
+DELAY_360_RIGHT = 3.1 # i o p , k l m
+DELAY_360_LEFT = 3.231 # q s d , f g h
 
 #   Initialize the Smart Car components
 
@@ -103,12 +109,25 @@ try:
             i += 1
         ang_t = get_r_angle(scan_list)
         print 'ang_t =', ang_t
+        # la position de l angle de vers la position initial
+        x = int( scan_list_size/2 - int(angle_to_direction) % int(scan_list_size / 2 ) )
+        y = int( scan_list_size/2 + int(-angle_to_direction) % int(scan_list_size / 2 ) )
 
-
+        if angle_to_direction > 0:
+            if scan_list[x] >= safety_distance:
+                car.spinRightModulationWarmUp(angle_to_direction,20,DELAY_360_RIGHT)
+                angle_to_direction = 0
+                continue
+        elif angle_to_direction <0:
+            if scan_list[y] >= safety_distance:
+                car.spinLeftModulationWarmUp(-angle_to_direction,20, DELAY_360_LEFT)
+                angle_to_direction = 0
+                continue
+            
         if len(obstacle) != 0:
             print 'start turning'
             car.spinModulation(ang_t, 20)
-            direction_goal = ang_t
+            angle_to_direction = angle_to_direction + ang_t
         else:
             ang_t = 0
         
@@ -118,11 +137,16 @@ try:
         if ang_t > 0:
             print 'advance with', (scan_list[x] /3)
             car.advanceDistance( scan_list[x] /3)
+            if angle_to_direction != 0:
+                distance_to_direction += math.cos(ang_t)*scan_list[x]/3
+            car.spinRightModulationWarmUp(ang_t,20, DELAY_360_RIGHT)
         else:
             print 'advance with', (scan_list[y] /3)
             car.advanceDistance( scan_list[y] /3 )
+            if angle_to_direction != 0:
+                distance_to_direction += math.cos(ang_t)*scan_list[y]/3
+            car.spinLeftModulationWarmUp(-ang_t,20, DELAY_360_LEFT)
 
-        car.spinModulation(-ang_t, 20)
 
 except KeyboardInterrupt:
     cleanup()
