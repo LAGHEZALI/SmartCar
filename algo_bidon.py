@@ -2,6 +2,9 @@
 
 import lib.ultra_sonic as us
 import lib.car_motors as car
+import lib.servo_motor as servo
+import time
+
 
 def cleanup():
     print 'Stopping Obstacle Avoidance Program...'
@@ -12,6 +15,9 @@ def cleanup():
     us.cleanup()
     print 'Done Cleaning up Ultra Sonic Sensor.'
     print 'Obstacle Avoidance Program Stoped.'
+    servo.cleanup()
+    print 'Done Cleaning up Servo Motor.'
+    print 'Control Program Stoped.'
 
 critical_distance = 20.0
 distance = 0.0
@@ -24,6 +30,7 @@ bool_turn = True;
 
 us.init()
 car.init()
+servo.init()
 
 print 'Obstacle Avoidance Program has Started ...'
 
