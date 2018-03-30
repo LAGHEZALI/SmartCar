@@ -31,7 +31,7 @@ left_turn_sleep = 0.7
 right_turn_sleep = 0.7
 
 safety_distance = 40
-max_angle = 180
+max_angle = 180.0
 scan_list = []
 scan_list_size = 21
 d_point = [50, 50]
@@ -113,23 +113,7 @@ try:
             i += 1
         ang_t = get_r_angle(scan_list)
         print 'ang_t =', ang_t
-        # la position de l angle de vers la position initial
-        x = int( scan_list_size/2 - int(angle_to_direction) % int(scan_list_size / 2 ) )
-        y = int( scan_list_size/2 + int(-angle_to_direction) % int(scan_list_size / 2 ) )
-        
-        if angle_to_direction > 0:
-            if scan_list[x] >= safety_distance+20:
-                print '*************************'
-                car.spinModulationWarmUp(angle_to_direction,20,DELAY_360_RIGHT, DELAY_360_LEFT)
-                angle_to_direction = 0
-                continue
-        elif angle_to_direction <0:
-            if scan_list[y] >= safety_distance+20:
-                print '*************************'
-                car.spinModulationWarmUp(angle_to_direction,20,DELAY_360_RIGHT, DELAY_360_LEFT)
-                angle_to_direction = 0
-                continue
-            
+     
         if len(obstacle) != 0:
             print 'start turning with the anglee f ===========>',ang_t
             car.spinModulationWarmUp(ang_t, 20,DELAY_360_RIGHT, DELAY_360_LEFT)
@@ -150,8 +134,8 @@ try:
             car.advanceDistanceWarmUp( scan_list[y] /2 , CAR_SPEED_FORWARD)
             if angle_to_direction != 0:
                 distance_to_direction += math.cos(ang_t)*scan_list[y]/2
-
-       # car.spinModulationWarmUp(-ang_t,20,DELAY_360_RIGHT, DELAY_360_LEFT)
+        
+        car.spinModulationWarmUp(-ang_t,20,DELAY_360_RIGHT, DELAY_360_LEFT)
 
 
 except KeyboardInterrupt:
